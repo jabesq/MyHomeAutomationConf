@@ -46,6 +46,7 @@ notify:
     api_key: REDACTED
     name: Home Assistant
 
+#Detect all device on network + my iCloud device
 device_tracker:
     - platform: nmap_tracker
       hosts: 192.168.1.10-200
@@ -67,6 +68,9 @@ device_tracker:
       interval_seconds: 300
       # Seconds to wait till marking someone as not home after not being seen (default: 180)
       consider_home: 180
+
+#Wemo Devices
+wemo:
 
 sensor:
     - platform: forecast
