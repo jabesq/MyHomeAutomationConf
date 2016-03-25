@@ -1,20 +1,20 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
-  name: Home
-  # C for Celcius, F for Fahrenheit
-  temperature_unit: C
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: Europe/Paris
-  #location required to calculate the time the sun rises and sets
-  latitude: REDACTED
-  longitude: REDACTED
-  
+    # Name of the location where Home Assistant is running
+    name: Home
+    # C for Celcius, F for Fahrenheit
+    temperature_unit: C
+    # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    time_zone: Europe/Paris
+    #location required to calculate the time the sun rises and sets
+    latitude: REDACTED
+    longitude: REDACTED
+
 zone:
-  name: REDACTED
-  latitude: REDACTED
-  longitude: REDACTED
-  radius: 250
-  icon: mdi:worker
+    name: work
+    latitude: REDACTED
+    longitude: REDACTED
+    radius: 100
+    icon: mdi:briefcase
 
 # Allows you to issue voice commands from the frontend
 conversation:
@@ -39,109 +39,115 @@ discovery:
 
 #IFTTT
 ifttt:
-  key: REDACTED
-  
+    key: REDACTED
+
 notify:
-  platform: pushbullet
-  api_key: REDACTED
-  name: Home Assistant
+    platform: pushbullet
+    api_key: REDACTED
+    name: Home Assistant
 
 device_tracker:
- - platform: nmap_tracker
-   hosts: 192.168.1.10-200
-   home_interval: 10
+    - platform: nmap_tracker
+      hosts: 192.168.1.10-200
+      home_interval: 10
 
-   # If new discovered devices are tracked by default (default: yes)
-   track_new_devices: no
-   # Seconds between each scan for new devices (default: 12)
-   interval_seconds: 12
-   # Seconds to wait till marking someone as not home after not being seen (default: 180)
-   consider_home: 180
+      # If new discovered devices are tracked by default (default: yes)
+      track_new_devices: no
+      # Seconds between each scan for new devices (default: 12)
+      interval_seconds: 12
+      # Seconds to wait till marking someone as not home after not being seen (default: 180)
+      consider_home: 180
 
- - platform: icloud
-   username: REDACTED
-   password: REDACTED
-   
+    - platform: icloud
+      username: REDACTED
+      password: REDACTED
+      # If new discovered devices are tracked by default (default: yes)
+      track_new_devices: no
+      # Seconds between each scan for new devices (default: 12)
+      interval_seconds: 300
+      # Seconds to wait till marking someone as not home after not being seen (default: 180)
+      consider_home: 180
+
 sensor:
- - platform: forecast
-   api_key: REDACTED
-   monitored_conditions:
-    - summary
-    - icon
-    - nearest_storm_distance
-    - precip_type
-    - precip_intensity
-    - precip_probability
-    - apparent_temperature
-    - dew_point
-    - wind_speed
-    - wind_bearing
-    - cloud_cover
-    - pressure
-    - visibility
-    - ozone
- - platform: netatmo
-   api_key: REDACTED
-   secret_key: REDACTED
-   username: REDACTED
-   password: REDACTED
-   modules:
-     Station:
-       - temperature
-       - humidity
-       - noise
-       - pressure
-       - co2
-     Chambre:
-       - temperature
-       - humidity
-       - co2
-     Extérieur:
-       - temperature
-       - humidity
- - platform: speedtest
-   monitored_conditions:
-     - ping
-     - download
-     - upload
-     
-group:   
- Weather:
-   - sensor.date__time
-   - sensor.weather_icon
-   - sensor.weather_condition
-   - sensor.weather_summary
-   - sun.sun
-   - sensor.netatmo_extrieur_humidity
-   - sensor.netatmo_extrieur_temperature
-   - sensor.weather_apparent_temperature
-   - sensor.weather_cloud_coverage
-   - sensor.weather_dew_point
-   - sensor.weather_ozone
-   - sensor.weather_precip_type
-   - sensor.weather_precip_probability
-   - sensor.weather_precip
-   - sensor.weather_precip_intensity
-   - sensor.weather_pressure
-   - sensor.weather_visibility
-   - sensor.weather_nearest_storm_distance
-   - sensor.weather_wind_bearing
-   - sensor.weather_wind_speed
-   
- Salon:
-    - sensor.netatmo_station_co2
-    - sensor.netatmo_station_humidity
-    - sensor.netatmo_station_noise
-    - sensor.netatmo_station_pressure
-    - sensor.netatmo_station_temperature
- 
- Chambre:
-    - sensor.netatmo_chambre_co2
-    - sensor.netatmo_chambre_humidity
-    - sensor.netatmo_chambre_temperature
-    
- Speedtest:
-   - sensor.speedtest_ping
-   - sensor.speedtest_download
-   - sensor.speedtest_upload
+    - platform: forecast
+      api_key: REDACTED
+      monitored_conditions:
+        - summary
+        - icon
+        - nearest_storm_distance
+        - precip_type
+        - precip_intensity
+        - precip_probability
+        - apparent_temperature
+        - dew_point
+        - wind_speed
+        - wind_bearing
+        - cloud_cover
+        - pressure
+        - visibility
+        - ozone
+    - platform: netatmo
+      api_key: REDACTED
+      secret_key: REDACTED
+      username: REDACTED
+      password: REDACTED
+      modules:
+        Station:
+            - temperature
+            - humidity
+            - noise
+            - pressure
+            - co2
+        Chambre:
+            - temperature
+            - humidity
+            - co2
+        Extérieur:
+            - temperature
+            - humidity
+    - platform: speedtest
+      monitored_conditions:
+        - ping
+        - download
+        - upload
+
+group:
+    Weather:
+        - sensor.date__time
+        - sensor.weather_icon
+        - sensor.weather_condition
+        - sensor.weather_summary
+        - sun.sun
+        - sensor.netatmo_extrieur_humidity
+        - sensor.netatmo_extrieur_temperature
+        - sensor.weather_apparent_temperature
+        - sensor.weather_cloud_coverage
+        - sensor.weather_dew_point
+        - sensor.weather_ozone
+        - sensor.weather_precip_type
+        - sensor.weather_precip_probability
+        - sensor.weather_precip
+        - sensor.weather_precip_intensity
+        - sensor.weather_pressure
+        - sensor.weather_visibility
+        - sensor.weather_nearest_storm_distance
+        - sensor.weather_wind_bearing
+        - sensor.weather_wind_speed
+
+    Salon:
+        - sensor.netatmo_station_co2
+        - sensor.netatmo_station_humidity
+        - sensor.netatmo_station_noise
+        - sensor.netatmo_station_pressure
+        - sensor.netatmo_station_temperature
+
+    Chambre:
+        - sensor.netatmo_chambre_co2
+        - sensor.netatmo_chambre_humidity
+        - sensor.netatmo_chambre_temperature
+
+    Speedtest:
+        - sensor.speedtest_ping
+        - sensor.speedtest_download
+        - sensor.speedtest_upload
 
