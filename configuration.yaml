@@ -37,10 +37,8 @@ updater:
 # Discover some devices automatically
 discovery:
 
-#Wemo Devices
 wemo:
 
-#Media Player
 media_player:
   platform: plex
 
@@ -70,7 +68,7 @@ device_tracker:
       username: REDACTED
       password: REDACTED
       # If new discovered devices are tracked by default (default: yes)
-      track_new_devices: no
+      track_new_devices: yes
       # Seconds between each scan for new devices (default: 12)
       interval_seconds: 300
       # Seconds to wait till marking someone as not home after not being seen (default: 180)
@@ -152,7 +150,7 @@ thermostat:
     
 group:
     Salon:
-        - switch.meuble_tv
+        - switch.lumiere_salon
         - media_player.apple_tv
         - sensor.netatmo_station_co2
         - sensor.netatmo_station_humidity
@@ -190,4 +188,20 @@ group:
         - sensor.speedtest_ping
         - sensor.speedtest_download
         - sensor.speedtest_upload
+        
+input_boolean:
+    someone_home:
+        name: Someone detected
+        initial: off
+        
+automation:
+    - alias: 'Rule 1 Light on in the evening'
+      trigger:
+        - platform: state
+          entity_id: switch.tv_chaine_hifi
+          from: 'on'
+      action:
+        service: notify.notify
+        data:
+            message: Something just happened, better take a look!
 
