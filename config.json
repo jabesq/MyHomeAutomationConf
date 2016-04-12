@@ -1,0 +1,38 @@
+{
+    "bridge": {
+        "name": "Homebridge",
+        "username": "FD:22:3D:E3:CE:27",
+        "port": 51826,
+        "pin": "031-45-154"
+    },
+
+    "platforms": [
+    {
+        "platform": "netatmo",
+        "name": "Station météo",
+        "ttl": 5,
+        "auth": {
+            "client_id": "REDACTED",
+            "client_secret": "REDACTED",
+            "username": "REDACTED",
+            "password": "REDACTED"
+        }
+    },
+
+    {
+          "platform": "BelkinWeMo",
+          "name": "WeMo",
+          "expected_accessories" : "2",
+          "timeout" : "25",
+          "no_motion_timer": "60",
+          "homekit_safe" : "1"
+    },
+
+    {
+        "platform": "HomeAssistant",
+        "name": "HomeAssistant",
+        "host": "http://127.0.0.1:8123",
+        "supported_types": ["scene"]
+    }
+    ]
+}

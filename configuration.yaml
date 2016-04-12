@@ -37,6 +37,13 @@ updater:
 # Discover some devices automatically
 discovery:
 
+#Wemo Devices
+wemo:
+
+#Media Player
+media_player:
+  platform: plex
+
 #IFTTT
 ifttt:
     key: REDACTED
@@ -68,16 +75,30 @@ device_tracker:
       interval_seconds: 300
       # Seconds to wait till marking someone as not home after not being seen (default: 180)
       consider_home: 180
+      
+    - platform: owntracks
+      max_gps_accuracy: 150
+      # If new discovered devices are tracked by default (default: yes)
+      track_new_devices: yes
+      # Seconds between each scan for new devices (default: 12)
+      interval_seconds: 300
+      # Seconds to wait till marking someone as not home after not being seen (default: 180)
+      consider_home: 180
+    
 
-#Wemo Devices
-wemo:
+#MQTT Broker
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant
+  keepalive: 60
+
 
 sensor:
     - platform: forecast
       api_key: REDACTED
       monitored_conditions:
         - summary
-        - icon
         - nearest_storm_distance
         - precip_type
         - precip_intensity
@@ -115,10 +136,32 @@ sensor:
         - download
         - upload
 
+#Demo sensor
+binary_sensor:
+    platform: demo
+    
+camera:
+    platform: demo
+
+light:
+    platform: demo
+    
+thermostat:
+    platform: demo
+    
+    
 group:
+    Salon:
+        - switch.meuble_tv
+        - media_player.apple_tv
+        - sensor.netatmo_station_co2
+        - sensor.netatmo_station_humidity
+        - sensor.netatmo_station_noise
+        - sensor.netatmo_station_pressure
+        - sensor.netatmo_station_temperature
+        
     Weather:
         - sensor.date__time
-        - sensor.weather_icon
         - sensor.weather_condition
         - sensor.weather_summary
         - sun.sun
@@ -137,13 +180,6 @@ group:
         - sensor.weather_nearest_storm_distance
         - sensor.weather_wind_bearing
         - sensor.weather_wind_speed
-
-    Salon:
-        - sensor.netatmo_station_co2
-        - sensor.netatmo_station_humidity
-        - sensor.netatmo_station_noise
-        - sensor.netatmo_station_pressure
-        - sensor.netatmo_station_temperature
 
     Chambre:
         - sensor.netatmo_chambre_co2
