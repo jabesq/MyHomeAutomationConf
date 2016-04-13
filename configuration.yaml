@@ -56,13 +56,8 @@ device_tracker:
     - platform: nmap_tracker
       hosts: 192.168.1.10-200
       home_interval: 10
-
       # If new discovered devices are tracked by default (default: yes)
       track_new_devices: no
-      # Seconds between each scan for new devices (default: 12)
-      interval_seconds: 12
-      # Seconds to wait till marking someone as not home after not being seen (default: 180)
-      consider_home: 180
 
     - platform: icloud
       username: REDACTED
@@ -73,7 +68,7 @@ device_tracker:
       interval_seconds: 300
       # Seconds to wait till marking someone as not home after not being seen (default: 180)
       consider_home: 180
-      
+
     - platform: owntracks
       max_gps_accuracy: 150
       # If new discovered devices are tracked by default (default: yes)
@@ -82,7 +77,6 @@ device_tracker:
       interval_seconds: 300
       # Seconds to wait till marking someone as not home after not being seen (default: 180)
       consider_home: 180
-    
 
 #MQTT Broker
 mqtt:
@@ -137,17 +131,17 @@ sensor:
 #Demo sensor
 binary_sensor:
     platform: demo
-    
+
 camera:
     platform: demo
 
 light:
     platform: demo
-    
+
 thermostat:
     platform: demo
-    
-    
+
+
 group:
     Salon:
         - switch.lumiere_salon
@@ -157,7 +151,7 @@ group:
         - sensor.netatmo_station_noise
         - sensor.netatmo_station_pressure
         - sensor.netatmo_station_temperature
-        
+
     Weather:
         - sensor.date__time
         - sensor.weather_condition
@@ -188,17 +182,17 @@ group:
         - sensor.speedtest_ping
         - sensor.speedtest_download
         - sensor.speedtest_upload
-        
+
 input_boolean:
     someone_home:
         name: Someone detected
         initial: off
-        
+
 automation:
     - alias: 'Rule 1 Light on in the evening'
       trigger:
         - platform: state
-          entity_id: switch.tv_chaine_hifi
+          entity_id: switch.tv_hifi
           from: 'on'
       action:
         service: notify.notify
