@@ -8,7 +8,11 @@ homeassistant:
     #location required to calculate the time the sun rises and sets
     latitude: REDACTED
     longitude: REDACTED
+    customize:
+        input_boolean.someone_home:
+            hidden: false
 
+#Geofencing setup
 zone:
     name: work
     latitude: REDACTED
@@ -28,6 +32,12 @@ history:
 # View all events in a logbook
 logbook:
 
+#Specify level of logging
+logger:
+    default: info
+    logs:
+        homeassistant.components.sensor: critical
+
 # Enables the frontend
 frontend:
 
@@ -37,8 +47,10 @@ updater:
 # Discover some devices automatically
 discovery:
 
+#WeMo Devices
 wemo:
 
+#Media Player
 media_player:
   platform: plex
 
@@ -46,12 +58,12 @@ media_player:
 ifttt:
     key: REDACTED
 
+#Notifier
 notify:
     platform: pushbullet
     api_key: REDACTED
-    name: Home Assistant
 
-#Detect all device on network + my iCloud device
+#Detect all device on network + my iCloud device + OwnTracks User (MQTT)
 device_tracker:
     - platform: nmap_tracker
       hosts: 192.168.1.10-200
@@ -80,19 +92,17 @@ device_tracker:
 
 #MQTT Broker
 mqtt:
-  broker: 127.0.0.1
-  port: 1883
-  client_id: home-assistant
-  keepalive: 60
+    broker: 127.0.0.1
+    port: 1883
+    client_id: home-assistant
+    keepalive: 60
 
-
+#Sensors
 sensor:
     - platform: forecast
       api_key: REDACTED
       monitored_conditions:
         - summary
-        - nearest_storm_distance
-        - precip_type
         - precip_intensity
         - precip_probability
         - apparent_temperature
@@ -107,7 +117,7 @@ sensor:
       api_key: REDACTED
       secret_key: REDACTED
       username: REDACTED
-      password: REDACTED
+      payssword: REDACTED
       modules:
         Station:
             - temperature
@@ -128,68 +138,65 @@ sensor:
         - download
         - upload
 
-#Demo sensor
 binary_sensor:
-    platform: demo
 
 camera:
-    platform: demo
 
 light:
     platform: demo
 
 thermostat:
-    platform: demo
-
-
-group:
-    Salon:
-        - switch.lumiere_salon
-        - media_player.apple_tv
-        - sensor.netatmo_station_co2
-        - sensor.netatmo_station_humidity
-        - sensor.netatmo_station_noise
-        - sensor.netatmo_station_pressure
-        - sensor.netatmo_station_temperature
-
-    Weather:
-        - sensor.date__time
-        - sensor.weather_condition
-        - sensor.weather_summary
-        - sun.sun
-        - sensor.netatmo_extrieur_humidity
-        - sensor.netatmo_extrieur_temperature
-        - sensor.weather_apparent_temperature
-        - sensor.weather_cloud_coverage
-        - sensor.weather_dew_point
-        - sensor.weather_ozone
-        - sensor.weather_precip_type
-        - sensor.weather_precip_probability
-        - sensor.weather_precip
-        - sensor.weather_precip_intensity
-        - sensor.weather_pressure
-        - sensor.weather_visibility
-        - sensor.weather_nearest_storm_distance
-        - sensor.weather_wind_bearing
-        - sensor.weather_wind_speed
-
-    Chambre:
-        - sensor.netatmo_chambre_co2
-        - sensor.netatmo_chambre_humidity
-        - sensor.netatmo_chambre_temperature
-
-    Speedtest:
-        - sensor.speedtest_ping
-        - sensor.speedtest_download
-        - sensor.speedtest_upload
 
 input_boolean:
     someone_home:
         name: Someone detected
         initial: off
 
+##################################################################
+#
+#Let's manage and interact all these devices
+#
+##################################################################
+
+group:
+    Salon:
+        - switch.lumiere_salon
+        - media_player.apple_tv
+        - sensor.netatmo_station_pressure
+        - sensor.netatmo_station_temperature
+        - sensor.netatmo_station_co2
+        - sensor.netatmo_station_humidity
+        - sensor.netatmo_station_noise
+
+    Weather:
+        - sensor.weather_condition
+        - sensor.weather_summary
+        - sun.sun
+        - sensor.netatmo_extrieur_temperature
+        - sensor.weather_apparent_temperature
+        - sensor.netatmo_extrieur_humidity
+        - sensor.weather_cloud_coverage
+        - sensor.weather_dew_point
+        - sensor.weather_ozone
+        - sensor.weather_precip_probability
+        - sensor.weather_precip_intensity
+        - sensor.weather_pressure
+        - sensor.weather_visibility
+        - sensor.weather_wind_bearing
+        - sensor.weather_wind_speed
+
+    Chambre:
+        - sensor.netatmo_chambre_temperature
+        - sensor.netatmo_chambre_co2
+        - sensor.netatmo_chambre_humidity
+
+    Speedtest:
+        - sensor.speedtest_ping
+        - sensor.speedtest_download
+        - sensor.speedtest_upload
+
 automation:
-    - alias: 'Rule 1 Light on in the evening'
+    - alias: 'Test with Wemo switch TV/HIFI'
       trigger:
         - platform: state
           entity_id: switch.tv_hifi
