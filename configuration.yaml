@@ -113,6 +113,7 @@ sensor:
         - pressure
         - visibility
         - ozone
+
     - platform: netatmo
       api_key: REDACTED
       secret_key: REDACTED
@@ -132,11 +133,37 @@ sensor:
         Extérieur:
             - temperature
             - humidity
+
     - platform: speedtest
       monitored_conditions:
         - ping
         - download
         - upload
+
+    - platform: template
+      sensors:
+        conso_tv:
+            unit_of_measurement: 'W.h'
+            friendly_name: 'Conso TV'
+            value_template: >-
+                {%- if states.switch.tv_hifi.attributes.current_power_mwh %}
+                    {{ states.switch.tv_hifi.attributes.current_power_mwh | multiply(0.001) }}
+                {% else %}
+                    {%- if is_state('switch.tv_hifi', 'off') %}
+                        {{ 0 }}
+                    {% else %}
+                        {{ states.sensor.conso_tv }}
+                    {%- endif %}
+                {%- endif %}
+        battery_iphone:
+            unit_of_measurement: '%'
+            friendly_name: 'Battery iPhone'
+            value_template: >-
+                {%- if states.device_tracker.iphone.attributes.battery %}
+                    {{ states.device_tracker.iphone.attributes.battery }}
+                {% else %}
+                    {{ states.sensor.battery_iphone.state }}
+                {%- endif %}
 
 binary_sensor:
 
@@ -161,6 +188,7 @@ input_boolean:
 group:
     Salon:
         - switch.lumiere_salon
+        - switch.tv_hifi
         - media_player.apple_tv
         - sensor.netatmo_station_pressure
         - sensor.netatmo_station_temperature
