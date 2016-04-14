@@ -234,3 +234,17 @@ automation:
         data:
             message: Something just happened, better take a look!
 
+    - alias: 'Detect Standby mode for TV/HIFI'
+      trigger:
+        platform: numeric_state
+        entity_id: sensor.conso_tv
+        below: 13
+      condition:
+        platform: state
+        entity_id: switch.tv_hifi
+        state: 'on'
+      action:
+        service: notify.notify
+        data:
+            message: Tv est en Standby
+
