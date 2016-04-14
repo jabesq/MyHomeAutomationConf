@@ -178,6 +178,9 @@ input_boolean:
     someone_home:
         name: Someone detected
         initial: off
+    Reset_TV_Hifi:
+        name: TV reset Wanted
+        initial: off
 
 ##################################################################
 #
@@ -240,9 +243,12 @@ automation:
         entity_id: sensor.conso_tv
         below: 13
       condition:
-        platform: state
-        entity_id: switch.tv_hifi
-        state: 'on'
+        - platform: state
+          entity_id: switch.tv_hifi
+          state: 'on'
+        - platform: state
+          entity_id: input_boolean.Reset_TV_Hifi
+          state: 'off'
       action:
         service: notify.notify
         data:
