@@ -19,7 +19,7 @@ zone:
     longitude: REDACTED
     radius: 100
     icon: mdi:briefcase
-    
+
 logbook:
 
 # Allows you to issue voice commands from the frontend
@@ -58,30 +58,30 @@ notify:
 
 #Detect all device on network + my iCloud device + OwnTracks User (MQTT)
 device_tracker:
-    - platform: nmap_tracker
-      hosts: 192.168.1.10-200
-      home_interval: 10
-      # If new discovered devices are tracked by default (default: yes)
-      track_new_devices: no
+  - platform: nmap_tracker
+    hosts: 192.168.1.10-200
+    home_interval: 10
+    # If new discovered devices are tracked by default (default: yes)
+    track_new_devices: no
 
-    - platform: icloud
-      username: REDACTED
-      password: REDACTED
-      # If new discovered devices are tracked by default (default: yes)
-      track_new_devices: yes
-      # Seconds between each scan for new devices (default: 12)
-      interval_seconds: 300
-      # Seconds to wait till marking someone as not home after not being seen (default: 180)
-      consider_home: 180
+  - platform: icloud
+    username: REDACTED
+    password: REDACTED
+    # If new discovered devices are tracked by default (default: yes)
+    track_new_devices: yes
+    # Seconds between each scan for new devices (default: 12)
+    interval_seconds: 300
+    # Seconds to wait till marking someone as not home after not being seen (default: 180)
+    consider_home: 180
 
-    - platform: owntracks
-      max_gps_accuracy: 150
-      # If new discovered devices are tracked by default (default: yes)
-      track_new_devices: yes
-      # Seconds between each scan for new devices (default: 12)
-      interval_seconds: 300
-      # Seconds to wait till marking someone as not home after not being seen (default: 180)
-      consider_home: 180
+  - platform: owntracks
+    max_gps_accuracy: 150
+    # If new discovered devices are tracked by default (default: yes)
+    track_new_devices: yes
+    # Seconds between each scan for new devices (default: 12)
+    interval_seconds: 300
+    # Seconds to wait till marking someone as not home after not being seen (default: 180)
+    consider_home: 180
 
 #MQTT Broker
 mqtt:
@@ -92,61 +92,61 @@ mqtt:
 
 #Sensors
 sensor:
-    - platform: forecast
-      api_key: REDACTED
-      monitored_conditions:
-        - summary
-        - precip_intensity
-        - precip_probability
-        - apparent_temperature
-        - dew_point
-        - wind_speed
-        - wind_bearing
-        - cloud_cover
-        - pressure
-        - visibility
-        - ozone
+  - platform: forecast
+    api_key: REDACTED
+    monitored_conditions:
+      - summary
+      - precip_intensity
+      - precip_probability
+      - apparent_temperature
+      - dew_point
+      - wind_speed
+      - wind_bearing
+      - cloud_cover
+      - pressure
+      - visibility
+      - ozone
 
-    - platform: netatmo
-      api_key: REDACTED
-      secret_key: REDACTED
-      username: REDACTED
-      payssword: REDACTED
-      modules:
+  - platform: netatmo
+    api_key: REDACTED
+    secret_key: REDACTED
+    username: REDACTED
+    payssword: REDACTED
+    modules:
         Station:
-            - temperature
-            - humidity
-            - noise
-            - pressure
-            - co2
+          - temperature
+          - humidity
+          - noise
+          - pressure
+          - co2
         Chambre:
-            - temperature
-            - humidity
-            - co2
+          - temperature
+          - humidity
+          - co2
         Extérieur:
-            - temperature
-            - humidity
+          - temperature
+          - humidity
 
-    - platform: speedtest
-      monitored_conditions:
-        - ping
-        - download
-        - upload
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
 
-    - platform: template
-      sensors:
+  - platform: template
+    sensors:
         conso_tv:
             unit_of_measurement: 'W.h'
             friendly_name: 'Conso TV'
             value_template: >-
-                {%- if states.switch.tv_hifi.attributes.current_power_mwh %}
-                    {{ states.switch.tv_hifi.attributes.current_power_mwh | multiply(0.001) }}
-                {% else %}
-                    {%- if is_state('switch.tv_hifi', 'off') %}
-                        {{ 0 }}
+                {%- if is_state('switch.tv_hifi', 'on') %}
+                    {%- if states('switch.tv_hifi.attributes.current_power_mwh') %}
+                        {{ states.switch.tv_hifi.attributes.current_power_mwh | multiply(0.001) }}
                     {% else %}
-                        {{ states.sensor.conso_tv }}
+                            {{ states.sensor.conso_tv }}
                     {%- endif %}
+                {% else %}
+                    {{ 0 }}
                 {%- endif %}
         battery_iphone:
             unit_of_measurement: '%'
@@ -158,15 +158,7 @@ sensor:
                     {{ states.sensor.battery_iphone.state }}
                 {%- endif %}
 
-binary_sensor:
-
-camera:
-
-light:
-    platform: demo
-
-thermostat:
-
+#These inputs are mainly used as script flags
 input_boolean:
     someone_home:
         name: Someone detected
@@ -174,6 +166,10 @@ input_boolean:
     reset_tv_hifi:
         name: TV reset Wanted
         initial: off
+    tv_hifi_reset_done:
+        name: TV has been reset
+        initial: off
+
 
 ##################################################################
 #
@@ -183,93 +179,172 @@ input_boolean:
 
 group:
     Salon:
-        - switch.lumiere_salon
-        - switch.tv_hifi
-        - media_player.apple_tv
-        - sensor.netatmo_station_pressure
-        - sensor.netatmo_station_temperature
-        - sensor.netatmo_station_co2
-        - sensor.netatmo_station_humidity
-        - sensor.netatmo_station_noise
+      - switch.lumiere_salon
+      - switch.tv_hifi
+      - media_player.apple_tv
+      - sensor.netatmo_station_pressure
+      - sensor.netatmo_station_temperature
+      - sensor.netatmo_station_co2
+      - sensor.netatmo_station_humidity
+      - sensor.netatmo_station_noise
 
     Weather:
-        - sensor.weather_condition
-        - sensor.weather_summary
-        - sun.sun
-        - sensor.netatmo_extrieur_temperature
-        - sensor.weather_apparent_temperature
-        - sensor.netatmo_extrieur_humidity
-        - sensor.weather_cloud_coverage
-        - sensor.weather_dew_point
-        - sensor.weather_ozone
-        - sensor.weather_precip_probability
-        - sensor.weather_precip_intensity
-        - sensor.weather_pressure
-        - sensor.weather_visibility
-        - sensor.weather_wind_bearing
-        - sensor.weather_wind_speed
+      - sensor.weather_condition
+      - sensor.weather_summary
+      - sun.sun
+      - sensor.netatmo_extrieur_temperature
+      - sensor.weather_apparent_temperature
+      - sensor.netatmo_extrieur_humidity
+      - sensor.weather_cloud_coverage
+      - sensor.weather_dew_point
+      - sensor.weather_ozone
+      - sensor.weather_precip_probability
+      - sensor.weather_precip_intensity
+      - sensor.weather_pressure
+      - sensor.weather_visibility
+      - sensor.weather_wind_bearing
+      - sensor.weather_wind_speed
 
     Chambre:
-        - sensor.netatmo_chambre_temperature
-        - sensor.netatmo_chambre_co2
-        - sensor.netatmo_chambre_humidity
+      - sensor.netatmo_chambre_temperature
+      - sensor.netatmo_chambre_co2
+      - sensor.netatmo_chambre_humidity
 
     Speedtest:
-        - sensor.speedtest_ping
-        - sensor.speedtest_download
-        - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
 
 automation:
-    - alias: 'Detect Standby mode for TV/HIFI'
-      trigger:
+  - alias: 'Detect Standby mode for TV'
+    trigger:
         platform: numeric_state
         entity_id: sensor.conso_tv
         below: 13
-      condition:
-        - platform: state
-          entity_id: switch.tv_hifi
-          state: 'on'
-        - platform: state
-          entity_id: input_boolean.reset_tv_hifi
-          state: 'off'
-      action:
-        service: notify.notify
+    condition:
+      - platform: state
+        entity_id: switch.tv_hifi
+        state: 'on'
+      - platform: state
+        entity_id: input_boolean.reset_tv_hifi
+        state: 'off'
+    action:
+        service: input_boolean.turn_on
         data:
-            message: Tv est en Standby
+            entity_id: input_boolean.reset_tv_hifi
 
-    - alias: 'Someone known has been seen'
-      trigger:
+  - alias: 'TV has been restarted (reset flags)'
+    trigger:
+        platform: numeric_state
+        entity_id: sensor.conso_tv
+        above: 13
+    condition:
+      - platform: state
+        entity_id: input_boolean.reset_tv_hifi
+        state: 'on'
+    action:
+        service: script.turn_on
+        data:
+            entity_id: script.reset_flags
+
+  - alias: 'Someone known has been seen'
+    trigger:
         platform: event
         event_type: someone_known_seen
-      condition:
-        - platform: state
-          entity_id: input_boolean.someone_home
-          state: 'off'
-      action:
-        service: notify.notify
+    action:
+        service: script.turn_on
         data:
-            message: Quelqu'un a été vu
+            entity_id: script.someone_seen
+
+  - alias: 'Reset TV/Hifi'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.reset_tv_hifi
+        state: 'on'
+      - platform: state
+        entity_id: input_boolean.someone_home
+        state: 'on'
+    condition:
+      - platform: state
+        entity_id: input_boolean.reset_tv_hifi
+        state: 'on'
+      - platform: state
+        entity_id: input_boolean.someone_home
+        state: 'on'
+      - platform: state
+        entity_id: input_boolean.tv_hifi_reset_done
+        state: 'off'
+    action:
+        service: script.turn_on
+        data:
+            entity_id: script.reset_tv_hifi
+
 
 #One action is good, but several is better
 script:
-    - tv_standby:
-        alias: TV en veille
+    tv_standby:
+        alias: TV in standby
         sequence:
-            - alias: TV reset is asked
-              service: input_boolean.turn_on
-              data:
+          - alias: TV reset is asked
+            service: input_boolean.turn_on
+            data:
                 entity_id: input_boolean.reset_tv_hifi
-    
-    - someone_seen:
-        alias: Someone seen
+
+    reset_tv_hifi:
+        alias: Reset TV and Hifi (to shutdown Hifi)
         sequence:
-            - alias: Someone has been seen
-              service: input_boolean.turn_on
-              data:
-                entity_id: input_boolean.someone_home
-            - delay:
+          - service: notify.notify
+            data:
+                message: TV/Hifi Reset has been triggered
+          - service: switch.turn_off
+            data:
+                entity_id: switch.tv_hifi
+          - service: input_boolean.turn_on
+            data:
+                entity_id: input_boolean.tv_hifi_reset_done
+          - delay:
+                seconds: 10
+          - alias: Restart TV and Hifi
+            service: switch.turn_on
+            data:
+                entity_id: switch.tv_hifi
+          - service: notify.notify
+            data:
+                message: TV/Hifi Reset has been done
+
+    timer_someone_seen:
+        alias: person left after 10 minutes
+        sequence:
+          - delay:
                 minutes: 10
-            - alias: Everybody left
-              service: input_boolean.turn_off
-              data:
+          - alias: everybody left
+            service: input_boolean.turn_off
+            data:
                 entity_id: input_boolean.someone_home
+
+    someone_seen:
+        alias: Someone has been seen
+        sequence:
+          - service: notify.notify
+            data:
+                message: Someone has been seen
+          - service: script.turn_off
+            data:
+                entity_id: script.timer_someone_seen
+          - alias: Someone has been seen
+            service: input_boolean.turn_on
+            data:
+                entity_id: input_boolean.someone_home
+          - service: script.turn_on
+            data:
+                entity_id: script.timer_someone_seen
+
+    reset_flags:
+        sequence:
+          - service: input_boolean.turn_off
+            data:
+                entity_id: input_boolean.reset_tv_hifi
+          - service: input_boolean.turn_off
+            data:
+                entity_id: input_boolean.tv_hifi_reset_done
+
