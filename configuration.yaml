@@ -162,7 +162,7 @@ input_boolean:
         initial: off
     tv_hifi_reset_done:
         name: TV has been reset
-        initial: off
+        initial: on
 
 
 ##################################################################
@@ -222,6 +222,9 @@ automation:
       - platform: state
         entity_id: input_boolean.reset_tv_hifi
         state: 'off'
+      - platform: state
+        entity_id: input_boolean.tv_hifi_reset_done
+        state: 'off'
     action:
         service: input_boolean.turn_on
         data:
@@ -232,9 +235,13 @@ automation:
         platform: numeric_state
         entity_id: sensor.conso_tv
         above: 13
+    condition_type: or
     condition:
       - platform: state
         entity_id: input_boolean.reset_tv_hifi
+        state: 'on'
+      - platform: state
+        entity_id: input_boolean.tv_hifi_reset_done
         state: 'on'
     action:
         service: script.turn_on
@@ -257,14 +264,14 @@ automation:
         state: 'on'
       - platform: state
         entity_id: input_boolean.someone_home
-        state: 'on'
+        state: 'off'
     condition:
       - platform: state
         entity_id: input_boolean.reset_tv_hifi
         state: 'on'
       - platform: state
         entity_id: input_boolean.someone_home
-        state: 'on'
+        state: 'off'
       - platform: state
         entity_id: input_boolean.tv_hifi_reset_done
         state: 'off'
@@ -276,14 +283,6 @@ automation:
 
 #One action is good, but several is better
 script:
-    tv_standby:
-        alias: TV in standby
-        sequence:
-          - alias: TV reset is asked
-            service: input_boolean.turn_on
-            data:
-                entity_id: input_boolean.reset_tv_hifi
-
     reset_tv_hifi:
         alias: Reset TV and Hifi (to shutdown Hifi)
         sequence:
@@ -302,6 +301,9 @@ script:
             service: switch.turn_on
             data:
                 entity_id: switch.tv_hifi
+          - service: input_boolean.turn_off
+            data:
+                entity_id: input_boolean.reset_tv_hifi
           - service: notify.notify
             data:
                 message: TV/Hifi Reset has been done
@@ -319,9 +321,6 @@ script:
     someone_seen:
         alias: Someone has been seen
         sequence:
-          - service: notify.notify
-            data:
-                message: Someone has been seen
           - service: script.turn_off
             data:
                 entity_id: script.timer_someone_seen
