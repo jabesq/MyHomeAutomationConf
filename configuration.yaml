@@ -275,12 +275,19 @@ automation:
       - platform: state
         entity_id: input_boolean.someone_home
         state: 'off'
+      - platform: state
+        entity_id: switch.lumiere_salon
+        from: 'on'
+        to: 'off'
     condition:
       - platform: state
         entity_id: input_boolean.reset_tv_hifi
         state: 'on'
       - platform: state
         entity_id: input_boolean.someone_home
+        state: 'off'
+      - platform: state
+        entity_id: switch.lumiere_salon
         state: 'off'
       - platform: state
         entity_id: input_boolean.tv_hifi_reset_done
