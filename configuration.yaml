@@ -10,7 +10,17 @@ homeassistant:
     longitude: REDACTED
     customize:
         input_boolean.someone_home:
-            hidden: false
+            hidden: true
+        input_boolean.tv_hifi_reset_done:
+            hidden: true
+        input_boolean.reset_tv_hifi:
+            hidden: true
+        sensor.conso_tv:
+            hidden: true
+        script.someone_seen:
+            hidden: true
+        script.timer_someone_seen:
+            hidden: true
 
 #Geofencing setup
 zone:
@@ -286,9 +296,6 @@ script:
     reset_tv_hifi:
         alias: Reset TV and Hifi (to shutdown Hifi)
         sequence:
-          - service: notify.notify
-            data:
-                message: TV/Hifi Reset has been triggered
           - service: switch.turn_off
             data:
                 entity_id: switch.tv_hifi
@@ -304,9 +311,6 @@ script:
           - service: input_boolean.turn_off
             data:
                 entity_id: input_boolean.reset_tv_hifi
-          - service: notify.notify
-            data:
-                message: TV/Hifi Reset has been done
 
     timer_someone_seen:
         alias: person left after 10 minutes
