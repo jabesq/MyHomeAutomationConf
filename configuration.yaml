@@ -21,6 +21,10 @@ homeassistant:
             hidden: true
         script.timer_someone_seen:
             hidden: true
+        media_player.ipad_air_2_de_hugo:
+            hidden: true
+        media_player.iphone:
+            hidden: true
 
 #Geofencing setup
 zone:
@@ -96,6 +100,7 @@ mqtt:
 
 #Sensors
 sensor:
+  - platform: yr
   - platform: forecast
     api_key: REDACTED
     monitored_conditions:
