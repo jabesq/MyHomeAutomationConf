@@ -8,6 +8,15 @@
 
     "platforms": [
     {
+          "platform": "BelkinWeMo",
+          "name": "WeMo",
+          "expected_accessories" : "2",
+          "timeout" : "25",
+          "no_motion_timer": "60",
+          "homekit_safe" : "1"
+    },
+
+    {
         "platform": "netatmo",
         "name": "Station météo",
         "ttl": 5,
@@ -17,15 +26,6 @@
             "username": "REDACTED",
             "password": "REDACTED"
         }
-    },
-
-    {
-          "platform": "BelkinWeMo",
-          "name": "WeMo",
-          "expected_accessories" : "2",
-          "timeout" : "25",
-          "no_motion_timer": "60",
-          "homekit_safe" : "1"
     },
 
     {
