@@ -101,6 +101,7 @@ mqtt:
 #Sensors
 sensor:
   - platform: yr
+
   - platform: forecast
     api_key: REDACTED
     monitored_conditions:
@@ -157,15 +158,15 @@ sensor:
                 {% else %}
                     {{ 0 }}
                 {%- endif %}
-        battery_iphone:
-            unit_of_measurement: '% (batt.)'
-            friendly_name: 'Battery iPhone'
-            value_template: >-
-                {%- if states.device_tracker.iphone.attributes.battery %}
-                    {{ states.device_tracker.iphone.attributes.battery }}
-                {% else %}
-                    {{ states.sensor.battery_iphone.state }}
-                {%- endif %}
+        #battery_iphone:
+        #    unit_of_measurement: '% (batt.)'
+        #    friendly_name: 'Battery iPhone'
+        #    value_template: >-
+        #        {%- if states.device_tracker.iphone.attributes.battery %}
+        #            {{ states.device_tracker.iphone.attributes.battery }}
+        #        {% else %}
+        #            {{ states.sensor.battery_iphone.state }}
+        #        {%- endif %}
 
 #These inputs are mainly used as script flags
 input_boolean:
