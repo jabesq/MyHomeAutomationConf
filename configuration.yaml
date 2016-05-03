@@ -168,6 +168,12 @@ sensor:
         #            {{ states.sensor.battery_iphone.state }}
         #        {%- endif %}
 
+  - platform: mqtt
+    state_topic: "owntracks/Hugo/iPhone"
+    name: "Battery iPhone"
+    unit_of_measurement: "% (batt.)"
+    value_template: '{{ value_json.batt }}'
+
 #These inputs are mainly used as script flags
 input_boolean:
     someone_home:
