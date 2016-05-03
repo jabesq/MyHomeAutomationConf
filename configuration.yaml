@@ -65,6 +65,9 @@ media_player:
 ifttt:
     key: REDACTED
 
+#Zeroconf/Avahi/Bonjour
+zeroconf:
+
 #Notifier
 notify:
     platform: pushbullet
