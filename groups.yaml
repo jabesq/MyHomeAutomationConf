@@ -1,0 +1,38 @@
+### GROUPS ###
+
+Salon:
+  - switch.lumiere_salon
+  - switch.tv_hifi
+  - media_player.apple_tv
+  - sensor.netatmo_station_pressure
+  - sensor.netatmo_station_temperature
+  - sensor.netatmo_station_co2
+  - sensor.netatmo_station_humidity
+  - sensor.netatmo_station_noise
+
+Weather:
+  - sensor.weather_condition
+  - sensor.weather_summary
+  - sun.sun
+  - sensor.netatmo_extrieur_temperature
+  - sensor.weather_apparent_temperature
+  - sensor.netatmo_extrieur_humidity
+  - sensor.weather_cloud_coverage
+  - sensor.weather_dew_point
+  - sensor.weather_ozone
+  - sensor.weather_precip_probability
+  - sensor.weather_precip_intensity
+  - sensor.weather_pressure
+  - sensor.weather_visibility
+  - sensor.weather_wind_bearing
+  - sensor.weather_wind_speed
+
+Chambre:
+  - sensor.netatmo_chambre_temperature
+  - sensor.netatmo_chambre_co2
+  - sensor.netatmo_chambre_humidity
+
+Speedtest:
+  - sensor.speedtest_ping
+  - sensor.speedtest_download
+  - sensor.speedtest_upload

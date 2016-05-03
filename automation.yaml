@@ -1,0 +1,82 @@
+### AUTOMATION ###
+
+#Detect when the TV goes in standby mode
+- alias: 'Detect Standby mode for TV'
+trigger:
+    platform: numeric_state
+    entity_id: sensor.conso_tv
+    below: 13
+condition:
+  - platform: state
+    entity_id: switch.tv_hifi
+    state: 'on'
+  - platform: state
+    entity_id: input_boolean.reset_tv_hifi
+    state: 'off'
+  - platform: state
+    entity_id: input_boolean.tv_hifi_reset_done
+    state: 'off'
+action:
+    service: input_boolean.turn_on
+    data:
+        entity_id: input_boolean.reset_tv_hifi
+
+#Detect when the TV has been (re)started
+- alias: 'TV has been restarted (reset flags)'
+trigger:
+    platform: numeric_state
+    entity_id: sensor.conso_tv
+    above: 13
+condition_type: or
+condition:
+  - platform: state
+    entity_id: input_boolean.reset_tv_hifi
+    state: 'on'
+  - platform: state
+    entity_id: input_boolean.tv_hifi_reset_done
+    state: 'on'
+action:
+    service: script.turn_on
+    data:
+        entity_id: script.reset_flags
+
+#Someone known has been seen the camera (event coming from IFTTT)
+- alias: 'Someone known has been seen'
+trigger:
+    platform: event
+    event_type: someone_known_seen
+action:
+    service: script.turn_on
+    data:
+        entity_id: script.someone_seen
+
+#Reset TV/Hifi
+- alias: 'Reset TV/Hifi'
+trigger:
+  - platform: state
+    entity_id: input_boolean.reset_tv_hifi
+    state: 'on'
+  - platform: state
+    entity_id: input_boolean.someone_home
+    state: 'off'
+  - platform: state
+    entity_id: switch.lumiere_salon
+    from: 'on'
+    to: 'off'
+condition:
+  - platform: state
+    entity_id: input_boolean.reset_tv_hifi
+    state: 'on'
+  - platform: state
+    entity_id: input_boolean.someone_home
+    state: 'off'
+  - platform: state
+    entity_id: switch.lumiere_salon
+    state: 'off'
+  - platform: state
+    entity_id: input_boolean.tv_hifi_reset_done
+    state: 'off'
+action:
+    service: script.turn_on
+    data:
+        entity_id: script.reset_tv_hifi
