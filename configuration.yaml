@@ -57,6 +57,14 @@ notify:
     platform: pushbullet
     api_key: REDACTED
 
+#Camera
+camera:
+  - platform: demo
+
+  - platform: generic
+    still_image_url: https://1.vpn.netatmo.net/10.255.5.92/9558f58390770f50a7f185ad688aabfe/c9ojMclCQ6TUY3mppdpExqmSz1Y,/live/snapshot_720.jpg
+    name: Test NetAtmo
+
 #Detect all device on network + my iCloud device + OwnTracks User (MQTT)
 device_tracker:
   - platform: icloud
