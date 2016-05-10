@@ -21,19 +21,19 @@
   username: REDACTED
   password: REDACTED
   modules:
-      Station:
-        - temperature
-        - humidity
-        - noise
-        - pressure
-        - co2
-      Chambre:
-        - temperature
-        - humidity
-        - co2
-      Extérieur:
-        - temperature
-        - humidity
+    Station:
+      - temperature
+      - humidity
+      - noise
+      - pressure
+      - co2
+    Chambre:
+      - temperature
+      - humidity
+      - co2
+    Extérieur:
+      - temperature
+      - humidity
 
 - platform: speedtest
   monitored_conditions:
@@ -43,28 +43,28 @@
 
 - platform: template
   sensors:
-      conso_tv:
-          unit_of_measurement: 'W.h'
-          friendly_name: 'Conso TV'
-          value_template: >-
-              {%- if is_state('switch.tv_hifi', 'on') %}
-                  {%- if states('switch.tv_hifi.attributes.current_power_mwh') %}
-                      {{ states.switch.tv_hifi.attributes.current_power_mwh | multiply(0.001) }}
-                  {% else %}
-                          {{ states.sensor.conso_tv }}
-                  {%- endif %}
-              {% else %}
-                  {{ 0 }}
-              {%- endif %}
-      battery_iphone:
-          unit_of_measurement: '% (batt.)'
-          friendly_name: 'Battery iPhone (iCloud)'
-          value_template: >-
-              {%- if states.device_tracker.iphone.attributes.battery %}
-                  {{ states.device_tracker.iphone.attributes.battery }}
-              {% else %}
-                  {{ states.sensor.battery_iphone.state }}
-              {%- endif %}
+    conso_tv:
+        unit_of_measurement: 'W.h'
+        friendly_name: 'Conso TV'
+        value_template: >-
+            {%- if is_state('switch.tv_hifi', 'on') %}
+                {%- if states('switch.tv_hifi.attributes.current_power_mwh') %}
+                    {{ states.switch.tv_hifi.attributes.current_power_mwh | multiply(0.001) }}
+                {% else %}
+                        {{ states.sensor.conso_tv }}
+                {%- endif %}
+            {% else %}
+                {{ 0 }}
+            {%- endif %}
+    battery_iphone:
+        unit_of_measurement: '% (batt.)'
+        friendly_name: 'Battery iPhone (iCloud)'
+        value_template: >-
+            {%- if states.device_tracker.iphone.attributes.battery %}
+                {{ states.device_tracker.iphone.attributes.battery }}
+            {% else %}
+                {{ states.sensor.battery_iphone.state }}
+            {%- endif %}
 
 - platform: mqtt
   state_topic: "owntracks/Hugo/iPhone"

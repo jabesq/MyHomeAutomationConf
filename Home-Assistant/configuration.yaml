@@ -43,7 +43,7 @@ wemo:
 
 #Media Player
 media_player:
-  platform: plex
+    platform: plex
 
 #IFTTT
 ifttt:
@@ -59,8 +59,6 @@ notify:
 
 #Camera
 camera:
-  - platform: demo
-
   - platform: generic
     still_image_url: https://1.vpn.netatmo.net/10.255.5.92/9558f58390770f50a7f185ad688aabfe/c9ojMclCQ6TUY3mppdpExqmSz1Y,/live/snapshot_720.jpg
     name: Test NetAtmo
