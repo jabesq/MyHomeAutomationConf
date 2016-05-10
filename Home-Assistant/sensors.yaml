@@ -71,3 +71,9 @@
   name: "Battery iPhone"
   unit_of_measurement: "% (batt.)"
   value_template: '{{ value_json.batt }}'
+
+- platform: google_travel_time
+  api_key: XXXX_XXXXX_XXXXX
+  origin: Trondheim, Norway
+  destination: Paris, France
+  travel_mode: driving # can be ["driving", "walking", "bicycling", "transit"]
