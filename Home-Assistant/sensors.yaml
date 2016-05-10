@@ -16,10 +16,6 @@
     - ozone
 
 - platform: netatmo
-  api_key: REDACTED
-  secret_key: REDACTED
-  username: REDACTED
-  password: REDACTED
   modules:
     Station:
       - temperature

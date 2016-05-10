@@ -85,6 +85,13 @@ mqtt:
     client_id: home-assistant
     keepalive: 60
 
+#Netatmo Component
+netatmo:
+    api_key: REDACTED
+    secret_key: REDACTED
+    username: REDACTED
+    password: REDACTED
+
 #Sensors
 sensor: !include sensors.yaml
 
