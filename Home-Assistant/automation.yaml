@@ -91,7 +91,7 @@
       above: 50
   condition:
     condition: and
-    condition:
+    conditions:
       - condition: time
         after: '08:00:00'
         before: '09:00:00'
@@ -115,7 +115,7 @@
     above: 50
   condition:
     condition: and
-    condition:
+    conditions:
       - condition: time
         after: '17:45:00'
         before: '19:00:00'
@@ -132,3 +132,18 @@
     service: notify.notify
     data:
         message: 'Bouchons present sur le trajet Travail-Maison'
+
+- alias: 'Rapport Activite Elsys #work'
+  trigger:
+    platform: time
+    after: '14:30:00'
+  condition:
+    condition: zone
+    entity_id: device_tracker.iphone
+    zone: zone.work
+  action:
+    service: notify.notify
+    data:
+        message: https://portail.advans-group.com/ActivityReport
+        title: Rapport Activite Elsys
+
