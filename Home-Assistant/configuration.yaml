@@ -92,6 +92,10 @@ netatmo:
     username: REDACTED
     password: REDACTED
 
+#Cameras
+camera:
+    platform: netatmo
+
 #Sensors
 sensor: !include sensors.yaml
 
