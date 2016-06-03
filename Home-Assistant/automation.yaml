@@ -85,3 +85,50 @@
     data:
         entity_id: script.reset_tv_hifi
 
+- trigger:
+    - platform: numeric_state
+      entity_id: sensor.trajet_maisontravail
+      above: 50
+  condition:
+    condition: and
+    condition:
+      - condition: time
+        after: '08:00:00'
+        before: '09:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: zone
+        entity_id: device_tracker.iphone
+        zone: zone.home
+  action:
+    service: notify.notify
+    data:
+        message: 'Bouchons present sur le trajet Maison-Travail'
+
+- trigger:
+    platform: numeric_state
+    entity_id: sensor.trajet_travailmaison
+    above: 50
+  condition:
+    condition: and
+    condition:
+      - condition: time
+        after: '17:45:00'
+        before: '19:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: zone
+        entity_id: device_tracker.iphone
+        zone: zone.work
+  action:
+    service: notify.notify
+    data:
+        message: 'Bouchons present sur le trajet Travail-Maison'
