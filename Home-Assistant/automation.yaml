@@ -107,6 +107,7 @@
   action:
     service: notify.notify
     data:
+        title: 'Bison Fute'
         message: 'Bouchons present sur le trajet Maison-Travail'
 
 - trigger:
@@ -131,6 +132,7 @@
   action:
     service: notify.notify
     data:
+        title: 'Bison Fute'
         message: 'Bouchons present sur le trajet Travail-Maison'
 
 - alias: 'Rapport Activite Elsys #work'
