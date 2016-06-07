@@ -72,6 +72,15 @@
   unit_of_measurement: "% (batt.)"
   value_template: '{{ value_json.batt }}'
 
+- platform: nzbget
+  base_url: REDACTED
+  username: REDACTED
+  password: REDACTED
+  monitored_variables:
+    - DownloadRate
+    - DownloadPaused
+    - PostPaused
+
 - platform: google_travel_time
   api_key: XXXX_XXXXX_XXXXX
   origin: Trondheim, Norway
