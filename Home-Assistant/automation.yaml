@@ -88,7 +88,7 @@
 - trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_maisontravail
-      above: 50
+      above: 55
   condition:
     condition: and
     conditions:
@@ -148,4 +148,24 @@
     data:
         message: https://portail.advans-group.com/ActivityReport
         title: Rapport Activite Elsys
+
+- alias: 'Batterie iPhone faible'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.battery_iphone
+    below: 30
+  condition:
+    condition: or
+    conditions:
+      - condition: zone
+        entity_id: device_tracker.iphone
+        zone: zone.work
+      - condition: zone
+        entity_id: device_tracker.iphone
+        zone: zone.home
+  action:
+    service: notify.notify
+    data:
+        title: 'Batterie iPhone'
+        message: 'Batterie iPhone < 30%, penser a recharger'
 

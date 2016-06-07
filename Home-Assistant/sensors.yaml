@@ -60,7 +60,7 @@
         unit_of_measurement: '% (batt.)'
         friendly_name: 'Battery iPhone (iCloud)'
         value_template: >-
-            {%- if states.device_tracker.iphone.attributes.battery %}
+            {%- if states('device_tracker.iphone.attributes.battery') %}
                 {{ states.device_tracker.iphone.attributes.battery }}
             {% else %}
                 {{ states.sensor.battery_iphone.state }}
