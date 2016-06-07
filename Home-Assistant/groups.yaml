@@ -11,6 +11,13 @@ salon:
       - sensor.netatmo_station_humidity
       - sensor.netatmo_station_noise
 
+travel_time:
+    name: Bison Fute
+    icon: mdi:car
+    entities:
+      - sensor.trajet_maisontravail
+      - sensor.trajet_travailmaison
+
 weather:
     name: Meteo
     entities:
@@ -52,11 +59,4 @@ nzbget:
       - sensor.nzbget_download_paused
       - sensor.nzbget_post_processing_paused
       - sensor.nzbget_speed
-
-travel_time:
-    name: Bison Fute
-    icon: mdi:car
-    entities:
-      - sensor.trajet_maisontravail
-      - sensor.trajet_travailmaison
 
