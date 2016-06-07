@@ -16,3 +16,7 @@ media_player.iphone:
     hidden: true
 sensor.battery_iphone_2:
     hidden: true
+sensor.trajet_maisontravail:
+    icon: mdi:traffic-light
+sensor.trajet_travailmaison:
+    icon: mdi:traffic-light
