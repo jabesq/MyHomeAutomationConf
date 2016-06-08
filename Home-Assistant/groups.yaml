@@ -21,19 +21,18 @@ travel_time:
 weather:
     name: Meteo
     entities:
-      - sensor.weather_condition
       - sensor.weather_summary
       - sun.sun
       - sensor.netatmo_extrieur_temperature
       - sensor.weather_apparent_temperature
-      - sensor.netatmo_extrieur_humidity
-      - sensor.weather_cloud_coverage
       - sensor.weather_dew_point
+      - sensor.netatmo_extrieur_humidity
       - sensor.weather_ozone
       - sensor.weather_precip_probability
       - sensor.weather_precip_intensity
       - sensor.netatmo_station_pressure
       - sensor.weather_pressure
+      - sensor.weather_cloud_coverage
       - sensor.weather_visibility
       - sensor.weather_wind_bearing
       - sensor.weather_wind_speed
@@ -48,6 +47,7 @@ chambre:
 
 speedtest:
     name: Speedtest
+    icon: mdi:speedometer
     entities:
       - sensor.speedtest_ping
       - sensor.speedtest_download
@@ -55,6 +55,7 @@ speedtest:
 
 nzbget:
     name: NZBGet
+    icon: mdi:speedometer
     entities:
       - sensor.nzbget_download_paused
       - sensor.nzbget_post_processing_paused

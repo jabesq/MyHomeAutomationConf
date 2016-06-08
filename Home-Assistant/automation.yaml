@@ -89,6 +89,8 @@
     - platform: numeric_state
       entity_id: sensor.trajet_maisontravail
       above: 55
+    - platform: time
+      after: '08:00:00'
   condition:
     condition: and
     conditions:
@@ -111,9 +113,11 @@
         message: 'Bouchons present sur le trajet Maison-Travail'
 
 - trigger:
-    platform: numeric_state
-    entity_id: sensor.trajet_travailmaison
-    above: 50
+    - platform: numeric_state
+      entity_id: sensor.trajet_travailmaison
+      above: 50
+    - platform: time
+      after: '17:45:00'
   condition:
     condition: and
     conditions:
