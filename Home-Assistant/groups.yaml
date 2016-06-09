@@ -11,12 +11,13 @@ salon:
       - sensor.netatmo_station_humidity
       - sensor.netatmo_station_noise
 
-travel_time:
-    name: Bison Fute
-    icon: mdi:car
+chambre:
+    name: Chambre
+    icon: mdi:hotel
     entities:
-      - sensor.trajet_maisontravail
-      - sensor.trajet_travailmaison
+      - sensor.netatmo_chambre_temperature
+      - sensor.netatmo_chambre_co2
+      - sensor.netatmo_chambre_humidity
 
 weather:
     name: Meteo
@@ -37,13 +38,12 @@ weather:
       - sensor.weather_wind_bearing
       - sensor.weather_wind_speed
 
-chambre:
-    name: Chambre
-    icon: mdi:hotel
+travel_time:
+    name: Bison Fute
+    icon: mdi:car
     entities:
-      - sensor.netatmo_chambre_temperature
-      - sensor.netatmo_chambre_co2
-      - sensor.netatmo_chambre_humidity
+      - sensor.trajet_maisontravail
+      - sensor.trajet_travailmaison
 
 speedtest:
     name: Speedtest
@@ -61,3 +61,28 @@ nzbget:
       - sensor.nzbget_post_processing_paused
       - sensor.nzbget_speed
 
+script:
+    entities:
+      - script.reset_flags
+      - script.reset_tv_hifi
+
+default_view:
+    view: yes
+    entities:
+      - device_tracker.iphone
+      - sensor.battery_iphone
+      - sensor.yr_symbol
+      - sun.sun
+      - group.salon
+      - group.chambre
+      - group.travel_time
+      - group.weather
+
+admin_panel:
+    name: Admin
+    icon: mdi:settings
+    view: yes
+    entities:
+      - group.speedtest
+      - group.nzbget
+      - group.script
