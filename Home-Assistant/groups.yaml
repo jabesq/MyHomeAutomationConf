@@ -69,6 +69,7 @@ script:
 default_view:
     view: yes
     entities:
+      - updater.updater
       - device_tracker.iphone
       - sensor.battery_iphone
       - sensor.yr_symbol
