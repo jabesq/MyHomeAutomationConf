@@ -69,15 +69,15 @@ device_tracker:
     # Seconds to wait till marking someone as not home after not being seen (default: 180)
     consider_home: 180
 
-  - platform: owntracks
-    max_gps_accuracy: 150
-    # If new discovered devices are tracked by default (default: yes)
-    track_new_devices: no
-    # Seconds between each scan for new devices (default: 12)
-    interval_seconds: 300
-    # Seconds to wait till marking someone as not home after not being seen (default: 180)
-    consider_home: 180
-
+#  - platform: owntracks
+#    max_gps_accuracy: 150
+#    # If new discovered devices are tracked by default (default: yes)
+#    track_new_devices: no
+#    # Seconds between each scan for new devices (default: 12)
+#    interval_seconds: 300
+#    # Seconds to wait till marking someone as not home after not being seen (default: 180)
+#    consider_home: 180
+#
 #MQTT Broker
 mqtt:
     broker: 127.0.0.1

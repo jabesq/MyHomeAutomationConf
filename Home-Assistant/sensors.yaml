@@ -62,12 +62,12 @@
                 {{ states.sensor.battery_iphone.state }}
             {%- endif %}
 
-- platform: mqtt
-  state_topic: "owntracks/Hugo/iPhone"
-  name: "Battery iPhone"
-  unit_of_measurement: "% (batt.)"
-  value_template: '{{ value_json.batt }}'
-
+#- platform: mqtt
+#  state_topic: "owntracks/Hugo/iPhone"
+#  name: "Battery iPhone"
+#  unit_of_measurement: "% (batt.)"
+#  value_template: '{{ value_json.batt }}'
+#
 - platform: nzbget
   base_url: REDACTED
   username: REDACTED
