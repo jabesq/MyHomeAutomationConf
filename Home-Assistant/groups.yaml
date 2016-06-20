@@ -78,6 +78,7 @@ default_view:
       - group.chambre
       - group.travel_time
       - group.weather
+      - camera.salon
 
 admin_panel:
     name: Admin
