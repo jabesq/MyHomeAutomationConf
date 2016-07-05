@@ -6,15 +6,15 @@ homeassistant:
     # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     time_zone: Europe/Paris
     #location required to calculate the time the sun rises and sets
-    latitude: REDACTED
-    longitude: REDACTED
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
     customize: !include customization.yaml
 
 #Geofencing setup
 zone:
     name: work
-    latitude: REDACTED
-    longitude: REDACTED
+    latitude: !secret work_latitude
+    longitude: !secret work_longitude
     radius: 100
     icon: mdi:briefcase
 
@@ -47,7 +47,7 @@ media_player:
 
 #IFTTT
 ifttt:
-    key: REDACTED
+    key: !secret ifttt_key
 
 #Zeroconf/Avahi/Bonjour
 zeroconf:
@@ -55,13 +55,13 @@ zeroconf:
 #Notifier
 notify:
     platform: pushbullet
-    api_key: REDACTED
+    api_key: !secret pushbullet_api_key
 
 #Detect all device on network + my iCloud device + OwnTracks User (MQTT)
 device_tracker:
   - platform: icloud
-    username: REDACTED
-    password: REDACTED
+    username: !secret icloud_username
+    password: !secret icloud_password
     # If new discovered devices are tracked by default (default: yes)
     track_new_devices: yes
     # Seconds between each scan for new devices (default: 12)
@@ -87,10 +87,10 @@ mqtt:
 
 #Netatmo Component
 netatmo:
-    api_key: REDACTED
-    secret_key: REDACTED
-    username: REDACTED
-    password: REDACTED
+    api_key: !secret netatmo_api_key
+    secret_key: !secret netatmo_secret_key
+    username: !secret netatmo_username
+    password: !secret netatmo_password
 
 #Cameras
 camera:

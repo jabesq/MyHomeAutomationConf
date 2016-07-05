@@ -1,7 +1,7 @@
 - platform: yr
 
 - platform: forecast
-  api_key: REDACTED
+  api_key: !secret forecast_api_key
   monitored_conditions:
     - summary
     - precip_intensity

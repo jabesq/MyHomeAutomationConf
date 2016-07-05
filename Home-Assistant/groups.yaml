@@ -23,7 +23,6 @@ weather:
     name: Meteo
     entities:
       - sensor.weather_summary
-      - sun.sun
       - sensor.netatmo_extrieur_temperature
       - sensor.weather_apparent_temperature
       - sensor.weather_dew_point
