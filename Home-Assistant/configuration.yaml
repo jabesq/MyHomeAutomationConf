@@ -9,6 +9,8 @@ homeassistant:
     latitude: !secret home_latitude
     longitude: !secret home_longitude
     customize: !include customization.yaml
+    # Impacts weather/sunrise data (altitude above sea level)
+    elevation: 8
 
 #Geofencing setup
 zone:

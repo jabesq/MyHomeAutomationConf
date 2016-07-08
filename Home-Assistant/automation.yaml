@@ -161,18 +161,29 @@
 
 - alias: 'Batterie iPhone faible'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.battery_iphone
-    below: 30
-  condition:
-    condition: or
-    conditions:
-      - condition: zone
+      - platform: numeric_state
+        entity_id: sensor.battery_iphone
+        below: 30
+      - platform: zone
         entity_id: device_tracker.iphone
         zone: zone.work
-      - condition: zone
+      - platform: zone
         entity_id: device_tracker.iphone
         zone: zone.home
+  condition:
+    condition: and
+    conditions:
+      - condition: or
+        conditions:
+          - condition: zone
+            entity_id: device_tracker.iphone
+            zone: zone.work
+          - condition: zone
+            entity_id: device_tracker.iphone
+            zone: zone.home
+      - condition: numeric_state
+        entity_id: sensor.battery_iphone
+        below: 30
   action:
     service: notify.notify
     data:
