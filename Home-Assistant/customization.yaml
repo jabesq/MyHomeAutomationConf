@@ -12,6 +12,8 @@ script.timer_someone_seen:
     hidden: true
 media_player.ipad_air_2_de_hugo:
     hidden: true
+media_player.plex_web_safari:
+    hidden: true
 media_player.iphone:
     hidden: true
 sensor.battery_iphone_2:

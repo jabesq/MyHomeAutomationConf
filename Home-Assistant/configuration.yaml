@@ -41,7 +41,7 @@ updater:
 discovery:
 
 #WeMo Devices
-wemo:
+#wemo:
 
 #Media Player
 media_player:
@@ -95,8 +95,8 @@ netatmo:
     password: !secret netatmo_password
 
 #Cameras
-camera:
-    platform: netatmo
+#camera:
+#    platform: netatmo
 
 #Sensors
 sensor: !include sensors.yaml

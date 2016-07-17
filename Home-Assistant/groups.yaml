@@ -6,6 +6,9 @@ salon:
       - switch.lumiere_salon
       - switch.tv_hifi
       - media_player.apple_tv
+      - light.lumire_principale_du_salon
+      - light.saladier
+      - light.guirlande_entre_du_salon
       - sensor.netatmo_station_temperature
       - sensor.netatmo_station_co2
       - sensor.netatmo_station_humidity
@@ -15,9 +18,19 @@ chambre:
     name: Chambre
     icon: mdi:hotel
     entities:
+      - light.lumire_de_la_chambre
       - sensor.netatmo_chambre_temperature
       - sensor.netatmo_chambre_co2
       - sensor.netatmo_chambre_humidity
+
+other_lights:
+    name: Autres lumières
+    icon: mdi:lightbulb
+    entities:
+      - light.lumire_de_lentre
+      - light.lampe_de_la_cuisine
+      - light.hue_lightstrip_1
+      - light.lampe_bureau
 
 weather:
     name: Meteo
@@ -38,7 +51,7 @@ weather:
       - sensor.weather_wind_speed
 
 travel_time:
-    name: Bison Fute
+    name: Bison Futé
     icon: mdi:car
     entities:
       - sensor.trajet_maisontravail
@@ -68,6 +81,7 @@ script:
 default_view:
     view: yes
     entities:
+      - sensor.retour_maison
       - updater.updater
       - device_tracker.iphone
       - sensor.battery_iphone
@@ -75,6 +89,7 @@ default_view:
       - sun.sun
       - group.salon
       - group.chambre
+      - group.other_lights
       - group.travel_time
       - group.weather
       - camera.salon
@@ -87,3 +102,5 @@ admin_panel:
       - group.speedtest
       - group.nzbget
       - group.script
+      - group.all_devices
+      - group.all_lights
