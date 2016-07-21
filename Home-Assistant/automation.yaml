@@ -88,7 +88,7 @@
 - trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_maisontravail
-      above: 55
+      above: 45
     - platform: time
       after: '08:00:00'
   condition:
@@ -96,7 +96,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_maisontravail
-        above: 55
+        above: 45
       - condition: time
         after: '08:00:00'
         before: '09:00:00'
@@ -118,7 +118,7 @@
 - trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_travailmaison
-      above: 50
+      above: 40
     - platform: time
       after: '17:45:00'
   condition:
@@ -126,7 +126,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_travailmaison
-        above: 50
+        above: 40
       - condition: time
         after: '17:45:00'
         before: '19:00:00'
