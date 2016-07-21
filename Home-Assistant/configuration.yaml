@@ -127,3 +127,6 @@ automation: !include automation.yaml
 #One action is good, but several is better
 script: !include scripts.yaml
 
+shell_command:
+    update_hass: cd $HOME/MyHomeAutomationConf && git fetch --all && git reset --hard private/credentials
+
