@@ -104,3 +104,4 @@ admin_panel:
       - group.script
       - group.all_devices
       - group.all_lights
+      - configurator.philips_hue
