@@ -69,13 +69,13 @@
 #  value_template: '{{ value_json.batt }}'
 #
 - platform: nzbget
-  base_url: !secret nzbget_base_url
+  host: !secret nzbget_base_url
   username: !secret nzbget_username
   password: !secret nzbget_password
   monitored_variables:
-    - DownloadRate
-    - DownloadPaused
-    - PostPaused
+    - download_rate
+    - download_paused
+    - post_paused
 
 - platform: google_travel_time
   name: Trajet Maison->Travail

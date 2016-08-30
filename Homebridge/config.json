@@ -1,13 +1,13 @@
+#to be copied in /var/homebridge
 {
     "bridge": {
         "name": "Homebridge",
-        "username": "FD:22:3D:E3:CE:27",
+        "username": "FD:22:ED:E3:2E:27",
         "port": 51826,
-        "pin": "031-45-154"
+        "pin": "031-45-156"
     },
 
     "platforms": [
-
     {
         "platform": "netatmo",
         "name": "Station météo",
@@ -24,7 +24,7 @@
         "platform": "HomeAssistant",
         "name": "HomeAssistant",
         "host": "http://127.0.0.1:8123",
-        "supported_types": ["scene"]
+        "supported_types": ["switch", "media_player", "scene"]
     }
     ]
 }

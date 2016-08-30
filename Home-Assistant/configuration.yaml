@@ -3,6 +3,7 @@ homeassistant:
     name: Home
     # C for Celcius, F for Fahrenheit
     temperature_unit: C
+    unit_system: metric
     # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     time_zone: Europe/Paris
     #location required to calculate the time the sun rises and sets
@@ -11,6 +12,9 @@ homeassistant:
     customize: !include customization.yaml
     # Impacts weather/sunrise data (altitude above sea level)
     elevation: 8
+
+http:
+  api_password: !secret api_password
 
 #Geofencing setup
 zone:
@@ -41,7 +45,7 @@ updater:
 discovery:
 
 #WeMo Devices
-#wemo:
+wemo:
 
 #Media Player
 media_player:
@@ -71,6 +75,14 @@ device_tracker:
     # Seconds to wait till marking someone as not home after not being seen (default: 180)
     consider_home: 180
 
+proximity:
+  - zone: home
+    ignored_zones:
+      - work
+    devices:
+      - device_tracker.iphone
+    tolerance: 50
+
 #  - platform: owntracks
 #    max_gps_accuracy: 150
 #    # If new discovered devices are tracked by default (default: yes)
@@ -96,10 +108,22 @@ netatmo:
 
 #Cameras
 #camera:
-#    platform: netatmo
+    platform: netatmo
+
+# Example configuration.yaml entry
+light:
+  platform: hue
+  host: 192.168.1.10
 
 #Sensors
 sensor: !include sensors.yaml
+
+switch:
+  platform: flux
+  lights:
+      - light.lumire_de_lentre
+  stop_time: '23:00'
+  name: Fluxer
 
 #These inputs are mainly used as script flags
 input_boolean:

@@ -9,6 +9,8 @@ salon:
       - light.lumire_principale_du_salon
       - light.saladier
       - light.guirlande_entre_du_salon
+      - light.guirlande_du_meuble_tl
+      - light.lampe_des_cubes
       - sensor.netatmo_station_temperature
       - sensor.netatmo_station_co2
       - sensor.netatmo_station_humidity
@@ -29,31 +31,32 @@ other_lights:
     entities:
       - light.lumire_de_lentre
       - light.lampe_de_la_cuisine
-      - light.hue_lightstrip_1
       - light.lampe_bureau
 
 weather:
     name: Meteo
     entities:
-      - sensor.weather_summary
+      - sensor.forecastio_summary
       - sensor.netatmo_extrieur_temperature
-      - sensor.weather_apparent_temperature
-      - sensor.weather_dew_point
+      - sensor.forecastio_apparent_temperature
+      - sensor.forecastio_dew_point
       - sensor.netatmo_extrieur_humidity
-      - sensor.weather_ozone
-      - sensor.weather_precip_probability
-      - sensor.weather_precip_intensity
+      - sensor.forecastio_ozone
+      - sensor.forecastio_precip_probability
+      - sensor.forecastio_precip_intensity
       - sensor.netatmo_station_pressure
-      - sensor.weather_pressure
-      - sensor.weather_cloud_coverage
-      - sensor.weather_visibility
-      - sensor.weather_wind_bearing
-      - sensor.weather_wind_speed
+      - sensor.forecastio_pressure
+      - sensor.forecastio_cloud_coverage
+      - sensor.forecastio_visibility
+      - sensor.forecastio_wind_bearing
+      - sensor.forecastio_wind_speed
 
 travel_time:
     name: Bison Futé
     icon: mdi:car
     entities:
+      - proximity.home
+      - sensor.retour_maison
       - sensor.trajet_maisontravail
       - sensor.trajet_travailmaison
 
@@ -104,4 +107,6 @@ admin_panel:
       - group.script
       - group.all_devices
       - group.all_lights
+      - switch.fluxer
       - configurator.philips_hue
+      - configurator.plex_media_server
