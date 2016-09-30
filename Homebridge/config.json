@@ -9,22 +9,34 @@
 
     "platforms": [
     {
-        "platform": "netatmo",
-        "name": "Station météo",
-        "ttl": 5,
-        "auth": {
-            "client_id": "REDACTED",
-            "client_secret": "REDACTED",
-            "username": "REDACTED",
-            "password": "REDACTED"
-        }
+		"platform": "netatmo",
+		"name": "Station météo",
+		"ttl": 5,
+		"auth": {
+			"client_id": "REDACTED",
+			"client_secret": "REDACTED",
+			"username": "REDACTED",
+			"password": "REDACTED"
+		},
+                "deviceTypes": [
+                        "weatherstation",
+                        "thermostat",
+                        "welcome"
+                        ]
     },
 
     {
         "platform": "HomeAssistant",
         "name": "HomeAssistant",
         "host": "http://127.0.0.1:8123",
-        "supported_types": ["switch", "media_player", "scene"]
+        "password": "REDACTED",
+        "supported_types": ["switch", "media_player", "scene", "input_boolean"]
+    },
+
+    {
+        "platform": "HarmonyHub",
+        "name": "Living Room Harmony Hub"
     }
+
     ]
 }

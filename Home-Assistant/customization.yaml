@@ -17,7 +17,7 @@ media_player.plex_web_safari:
 media_player.iphone:
     hidden: true
 sensor.battery_iphone_2:
-    hidden: true
+    hidden: false
 sensor.trajet_maisontravail:
     icon: mdi:traffic-light
 sensor.trajet_travailmaison:

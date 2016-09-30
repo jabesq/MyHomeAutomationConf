@@ -21,6 +21,7 @@ chambre:
     icon: mdi:hotel
     entities:
       - light.lumire_de_la_chambre
+      - switch.fluxer_chambre
       - sensor.netatmo_chambre_temperature
       - sensor.netatmo_chambre_co2
       - sensor.netatmo_chambre_humidity
@@ -30,6 +31,7 @@ other_lights:
     icon: mdi:lightbulb
     entities:
       - light.lumire_de_lentre
+      - switch.fluxer
       - light.lampe_de_la_cuisine
       - light.lampe_bureau
 
@@ -82,12 +84,15 @@ script:
       - script.reset_tv_hifi
 
 default_view:
+#home:
     view: yes
     entities:
       - sensor.retour_maison
       - updater.updater
       - device_tracker.iphone
+      - device_tracker.hugo_iphone_6s
       - sensor.battery_iphone
+      - sensor.battery_iphone_2
       - sensor.yr_symbol
       - sun.sun
       - group.salon
@@ -107,6 +112,11 @@ admin_panel:
       - group.script
       - group.all_devices
       - group.all_lights
-      - switch.fluxer
       - configurator.philips_hue
       - configurator.plex_media_server
+      - automation.trajet_maisontravail
+      - automation.trajet_travailmaison
+      - automation.batterie_iphone_faible
+      - automation.rapport_activite_elsys_work
+      - automation.reset_tvhifi
+      - automation.someone_known_has_been_seen

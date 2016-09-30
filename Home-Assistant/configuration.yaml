@@ -74,24 +74,21 @@ device_tracker:
     interval_seconds: 300
     # Seconds to wait till marking someone as not home after not being seen (default: 180)
     consider_home: 180
+  - platform: owntracks
+    max_gps_accuracy: 150
+    # If new discovered devices are tracked by default (default: yes)
+    track_new_devices: yes
+    # Seconds between each scan for new devices (default: 12)
+    interval_seconds: 300
+    # Seconds to wait till marking someone as not home after not being seen (default: 180)
+    consider_home: 180
 
 proximity:
   - zone: home
-    ignored_zones:
-      - work
     devices:
       - device_tracker.iphone
     tolerance: 50
 
-#  - platform: owntracks
-#    max_gps_accuracy: 150
-#    # If new discovered devices are tracked by default (default: yes)
-#    track_new_devices: no
-#    # Seconds between each scan for new devices (default: 12)
-#    interval_seconds: 300
-#    # Seconds to wait till marking someone as not home after not being seen (default: 180)
-#    consider_home: 180
-#
 #MQTT Broker
 mqtt:
     broker: 127.0.0.1
@@ -107,7 +104,7 @@ netatmo:
     password: !secret netatmo_password
 
 #Cameras
-#camera:
+camera:
     platform: netatmo
 
 # Example configuration.yaml entry
@@ -119,11 +116,16 @@ light:
 sensor: !include sensors.yaml
 
 switch:
-  platform: flux
-  lights:
-      - light.lumire_de_lentre
-  stop_time: '23:00'
-  name: Fluxer
+  - platform: flux
+    lights:
+        - light.lumire_de_lentre
+    stop_time: '22:00'
+    name: Fluxer
+  - platform: flux
+    lights:
+        - light.lumire_de_la_chambre
+    stop_time: '22:00'
+    name: Fluxer chambre
 
 #These inputs are mainly used as script flags
 input_boolean:

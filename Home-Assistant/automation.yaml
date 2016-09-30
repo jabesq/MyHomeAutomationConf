@@ -85,10 +85,11 @@
     data:
         entity_id: script.reset_tv_hifi
 
-- trigger:
+- alias: 'Trajet maison-travail'
+  trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_maisontravail
-      above: 35
+      above: 30
     - platform: time
       after: '08:00:00'
   condition:
@@ -96,7 +97,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_maisontravail
-        above: 35
+        above: 30
       - condition: time
         after: '08:00:00'
         before: '09:00:00'
@@ -115,10 +116,11 @@
         title: 'Bison Fute'
         message: 'Bouchons present sur le trajet Maison-Travail'
 
-- trigger:
+- alias: 'Trajet travail-maison'
+  trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_travailmaison
-      above: 35
+      above: 30
     - platform: time
       after: '17:45:00'
   condition:
@@ -126,7 +128,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_travailmaison
-        above: 35
+        above: 30
       - condition: time
         after: '17:45:00'
         before: '19:00:00'
