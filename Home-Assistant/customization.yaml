@@ -22,3 +22,5 @@ sensor.trajet_maisontravail:
     icon: mdi:traffic-light
 sensor.trajet_travailmaison:
     icon: mdi:traffic-light
+switch.lumiere_salon:
+    homebridge_name: Arbre de Lumière
