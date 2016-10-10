@@ -38,20 +38,20 @@ other_lights:
 weather:
     name: Meteo
     entities:
-      - sensor.forecastio_summary
+      - sensor.dark_sky_summary
       - sensor.netatmo_extrieur_temperature
-      - sensor.forecastio_apparent_temperature
-      - sensor.forecastio_dew_point
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_dew_point
       - sensor.netatmo_extrieur_humidity
-      - sensor.forecastio_ozone
-      - sensor.forecastio_precip_probability
-      - sensor.forecastio_precip_intensity
+      - sensor.dark_sky_ozone
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_precip_intensity
       - sensor.netatmo_station_pressure
-      - sensor.forecastio_pressure
-      - sensor.forecastio_cloud_coverage
-      - sensor.forecastio_visibility
-      - sensor.forecastio_wind_bearing
-      - sensor.forecastio_wind_speed
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
 
 travel_time:
     name: Bison Futé
@@ -59,6 +59,7 @@ travel_time:
     entities:
       - proximity.home
       - sensor.retour_maison
+      - sensor.stats_retour_maison_mean
       - sensor.trajet_maisontravail
       - sensor.trajet_travailmaison
 
@@ -69,6 +70,8 @@ speedtest:
       - sensor.speedtest_ping
       - sensor.speedtest_download
       - sensor.speedtest_upload
+      - sensor.stats_speedtest_download_mean
+      - sensor.stats_speedtest_upload_mean
 
 nzbget:
     name: NZBGet

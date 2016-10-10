@@ -1,6 +1,6 @@
 - platform: yr
 
-- platform: forecast
+- platform: darksky
   api_key: !secret forecast_api_key
   monitored_conditions:
     - summary
@@ -103,3 +103,15 @@
   destination: zone.home
   options:
       departure_time: now
+
+- platform: statistics
+  entity_id: sensor.speedtest_download
+  name: Stats Speedtest download
+
+- platform: statistics
+  entity_id: sensor.speedtest_upload
+  name: Stats Speedtest upload
+
+- platform: statistics
+  entity_id: sensor.retour_maison
+  name: Stats Retour Maison
