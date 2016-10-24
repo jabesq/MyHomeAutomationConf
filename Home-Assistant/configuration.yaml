@@ -78,7 +78,7 @@ device_tracker:
     # Seconds to wait till marking someone as not home after not being seen (default: 180)
     consider_home: 180
   - platform: owntracks
-    max_gps_accuracy: 150
+    # max_gps_accuracy: 150
     # If new discovered devices are tracked by default (default: yes)
     track_new_devices: yes
     # Seconds between each scan for new devices (default: 12)
@@ -87,10 +87,10 @@ device_tracker:
     consider_home: 180
 
 proximity:
-  - zone: home
-    devices:
-      - device_tracker.iphone
-    tolerance: 50
+    home:
+        devices:
+          - device_tracker.iphone
+        tolerance: 50
 
 #MQTT Broker
 mqtt:
@@ -130,10 +130,6 @@ netatmo:
     username: !secret netatmo_username
     password: !secret netatmo_password
 
-#Cameras
-camera:
-    platform: netatmo
-
 # Example configuration.yaml entry
 light:
   platform: hue
@@ -153,6 +149,9 @@ switch:
         - light.lumire_de_la_chambre
     stop_time: '22:00'
     name: Fluxer chambre
+  - platform: neato
+    username: !secret neato_username
+    password: !secret neato_password
 
 #These inputs are mainly used as script flags
 input_boolean:

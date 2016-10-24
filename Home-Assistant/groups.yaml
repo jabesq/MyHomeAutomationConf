@@ -1,5 +1,4 @@
 ### GROUPS ###
-
 salon:
     name: Salon
     entities:
@@ -52,6 +51,7 @@ weather:
       - sensor.dark_sky_visibility
       - sensor.dark_sky_wind_bearing
       - sensor.dark_sky_wind_speed
+      - sensor.pws_alerts
 
 travel_time:
     name: Bison Futé
@@ -104,6 +104,7 @@ default_view:
       - group.travel_time
       - group.weather
       - camera.salon
+      - switch.ganondorf_clean
 
 admin_panel:
     name: Admin

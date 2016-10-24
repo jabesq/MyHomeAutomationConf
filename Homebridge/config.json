@@ -9,15 +9,15 @@
 
     "platforms": [
     {
-		"platform": "netatmo",
-		"name": "Station météo",
-		"ttl": 5,
-		"auth": {
-			"client_id": "REDACTED",
-			"client_secret": "REDACTED",
-			"username": "REDACTED",
-			"password": "REDACTED"
-		},
+        "platform": "netatmo",
+        "name": "Station météo",
+        "ttl": 5,
+        "auth": {
+            "client_id": "REDACTED",
+            "client_secret": "REDACTED",
+            "username": "REDACTED",
+            "password": "REDACTED"
+        },
                 "deviceTypes": [
                         "weatherstation",
                         "thermostat",
