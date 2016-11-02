@@ -81,6 +81,15 @@ nzbget:
       - sensor.nzbget_post_processing_paused
       - sensor.nzbget_speed
 
+security:
+    name: Sécurité
+    icon: mdi:security-home
+    entities:
+      - binary_sensor.salon_motion
+      - binary_sensor.salon_someone_known
+      - binary_sensor.salon_someone_unknown
+      - camera.salon
+
 script:
     entities:
       - script.reset_flags
@@ -92,10 +101,8 @@ default_view:
     entities:
       - sensor.retour_maison
       - updater.updater
-      - device_tracker.iphone
       - device_tracker.hugo_iphone_6s
       - sensor.battery_iphone
-      - sensor.battery_iphone_2
       - sensor.yr_symbol
       - sun.sun
       - group.salon
@@ -103,6 +110,7 @@ default_view:
       - group.other_lights
       - group.travel_time
       - group.weather
+      - group.security
       - camera.salon
       - switch.ganondorf_clean
 

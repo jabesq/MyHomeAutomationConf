@@ -29,17 +29,17 @@
     - download
     - upload
 
-- platform: template
-  sensors:
-    battery_iphone:
-        unit_of_measurement: '% (batt.)'
-        friendly_name: 'Battery iPhone (iCloud)'
-        value_template: >-
-            {%- if states('device_tracker.iphone.attributes.battery') %}
-                {{ states.device_tracker.iphone.attributes.battery }}
-            {% else %}
-                {{ states.sensor.battery_iphone.state }}
-            {%- endif %}
+#- platform: template
+#  sensors:
+#    battery_iphone:
+#        unit_of_measurement: '% (batt.)'
+#        friendly_name: 'Battery iPhone (iCloud)'
+#        value_template: >-
+#            {%- if states('device_tracker.iphone.attributes.battery') %}
+#                {{ states.device_tracker.iphone.attributes.battery }}
+#            {% else %}
+#                {{ states.sensor.battery_iphone.state }}
+#            {%- endif %}
 
 - platform: mqtt
   state_topic: "owntracks/Hugo/Iphone 6S"
@@ -75,7 +75,7 @@
 - platform: google_travel_time
   name: Retour Maison
   api_key: !secret google_api_key
-  origin: device_tracker.iphone
+  origin: device_tracker.hugo_iphone_6s
   destination: zone.home
   options:
       departure_time: now

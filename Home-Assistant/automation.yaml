@@ -83,10 +83,10 @@
         entity_id: sensor.battery_iphone
         below: 30
       - platform: zone
-        entity_id: device_tracker.iphone
+        entity_id: device_tracker.hugo_iphone_6s
         zone: zone.work
       - platform: zone
-        entity_id: device_tracker.iphone
+        entity_id: device_tracker.hugo_iphone_6s
         zone: zone.home
   condition:
     condition: and
@@ -94,10 +94,10 @@
       - condition: or
         conditions:
           - condition: zone
-            entity_id: device_tracker.iphone
+            entity_id: device_tracker.hugo_iphone_6s
             zone: zone.work
           - condition: zone
-            entity_id: device_tracker.iphone
+            entity_id: device_tracker.hugo_iphone_6s
             zone: zone.home
       - condition: numeric_state
         entity_id: sensor.battery_iphone
