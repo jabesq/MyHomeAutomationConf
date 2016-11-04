@@ -22,7 +22,7 @@
           - thu
           - fri
       - condition: zone
-        entity_id: device_tracker.iphone
+        entity_id: device_tracker.hugo_iphone_6s
         zone: zone.home
   action:
     service: notify.notify
@@ -53,7 +53,7 @@
           - thu
           - fri
       - condition: zone
-        entity_id: device_tracker.iphone
+        entity_id: device_tracker.hugo_iphone_6s
         zone: zone.work
   action:
     service: notify.notify
@@ -67,7 +67,7 @@
     after: '14:30:00'
   condition:
     condition: zone
-    entity_id: device_tracker.iphone
+    entity_id: device_tracker.hugo_iphone_6s
     zone: zone.work
   action:
     service: notify.notify

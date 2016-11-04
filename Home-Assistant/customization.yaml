@@ -16,11 +16,16 @@ media_player.plex_web_safari:
     hidden: true
 media_player.iphone:
     hidden: true
+media_player.ipad:
+    hidden: true
 sensor.battery_iphone_2:
     hidden: false
 sensor.trajet_maisontravail:
     icon: mdi:traffic-light
 sensor.trajet_travailmaison:
     icon: mdi:traffic-light
+sensor.battery_iphone:
+    icon: mdi:battery-80
 switch.lumiere_salon:
+    homebridge_hidden: true
     homebridge_name: Arbre de Lumière
