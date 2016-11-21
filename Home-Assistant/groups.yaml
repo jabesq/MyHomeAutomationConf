@@ -5,10 +5,10 @@ salon:
       - switch.lumiere_salon
       - switch.tv_hifi
       - media_player.apple_tv
-      - light.lumire_principale_du_salon
+      - light.plafond_du_salon
       - light.saladier
-      - light.guirlande_entre_du_salon
-      - light.guirlande_du_meuble_tl
+      - light.guirlande
+      - light.meuble_tele
       - light.lampe_des_cubes
       - sensor.netatmo_station_temperature
       - sensor.netatmo_station_co2
@@ -19,7 +19,7 @@ chambre:
     name: Chambre
     icon: mdi:hotel
     entities:
-      - light.lumire_de_la_chambre
+      - light.lumiere_de_la_chambre
       - switch.fluxer_chambre
       - sensor.netatmo_chambre_temperature
       - sensor.netatmo_chambre_co2
@@ -29,7 +29,7 @@ other_lights:
     name: Autres lumières
     icon: mdi:lightbulb
     entities:
-      - light.lumire_de_lentre
+      - light.plafond_de_lentree
       - switch.fluxer
       - light.lampe_de_la_cuisine
       - light.lampe_bureau
@@ -38,10 +38,10 @@ weather:
     name: Meteo
     entities:
       - sensor.dark_sky_summary
-      - sensor.netatmo_extrieur_temperature
+      - sensor.netatmo_exterieur_temperature
       - sensor.dark_sky_apparent_temperature
       - sensor.dark_sky_dew_point
-      - sensor.netatmo_extrieur_humidity
+      - sensor.netatmo_exterieur_humidity
       - sensor.dark_sky_ozone
       - sensor.dark_sky_precip_probability
       - sensor.dark_sky_precip_intensity
@@ -95,8 +95,8 @@ script:
       - script.reset_flags
       - script.reset_tv_hifi
 
-default_view:
-#home:
+#default_view:
+home:
     view: yes
     entities:
       - sensor.retour_maison

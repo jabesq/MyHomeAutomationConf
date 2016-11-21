@@ -15,8 +15,8 @@ homeassistant:
 
 http:
   api_password: !secret api_password
-  ssl_certificate: TO_BE_REDACTED
-  ssl_key: TO_BE_REDACTED
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
 
 #Geofencing setup
 zone:
@@ -26,11 +26,6 @@ zone:
     radius: 200
     icon: mdi:briefcase
 
-logbook:
-
-# Allows you to issue voice commands from the frontend
-conversation:
-
 # Track the sun
 sun:
 
@@ -39,6 +34,8 @@ recorder:
 
 # Enables support for tracking state changes over time.
 history:
+
+logbook:
 
 # Enables the frontend
 frontend:
@@ -54,6 +51,13 @@ wemo:
 
 #iOS App
 ios:
+
+#MQTT Broker
+mqtt:
+    broker: 127.0.0.1
+    port: 1883
+    client_id: home-assistant
+    keepalive: 60
 
 #Media Player
 media_player:
@@ -99,13 +103,6 @@ proximity:
         devices:
           - device_tracker.hugo_iphone_6s
 
-#MQTT Broker
-mqtt:
-    broker: 127.0.0.1
-    port: 1883
-    client_id: home-assistant
-    keepalive: 60
-
 #Netatmo Component
 netatmo:
     api_key: !secret netatmo_api_key
@@ -125,29 +122,31 @@ sensor: !include sensors.yaml
 switch:
   - platform: flux
     lights:
-        - light.lumire_de_lentre
-    stop_time: '22:00'
+        - light.plafond_de_lentree
+    stop_time: '23:00'
     name: Fluxer
   - platform: flux
     lights:
-        - light.lumire_de_la_chambre
-    stop_time: '22:00'
+        - light.lumiere_de_la_chambre
+    stop_time: '23:00'
     name: Fluxer chambre
-  - platform: neato
+
+
+neato:
     username: !secret neato_username
     password: !secret neato_password
 
 #These inputs are mainly used as script flags
-input_boolean:
-    someone_home:
-        name: Someone detected
-        initial: off
-    reset_tv_hifi:
-        name: TV reset Wanted
-        initial: off
-    tv_hifi_reset_done:
-        name: TV has been reset
-        initial: on
+#input_boolean:
+#    someone_home:
+#        name: Someone detected
+#        initial: off
+#    reset_tv_hifi:
+#        name: TV reset Wanted
+#        initial: off
+#    tv_hifi_reset_done:
+#        name: TV has been reset
+#        initial: on
 
 ##################################################################
 #

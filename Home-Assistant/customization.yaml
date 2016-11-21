@@ -29,3 +29,5 @@ sensor.battery_iphone:
 switch.lumiere_salon:
     homebridge_hidden: true
     homebridge_name: Arbre de Lumière
+switch.ganondorf_schedule:
+    homebridge_hidden: true
