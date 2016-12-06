@@ -49,9 +49,6 @@ discovery:
 #WeMo Devices
 wemo:
 
-#iOS App
-ios:
-
 #MQTT Broker
 mqtt:
     broker: 127.0.0.1
@@ -74,8 +71,6 @@ zeroconf:
 notify:
   - platform: pushbullet
     api_key: !secret pushbullet_api_key
-  - name: iOSApp
-    platform: ios
 
 #Detect all device on network + my iCloud device + OwnTracks User (MQTT)
 device_tracker:
@@ -123,30 +118,51 @@ switch:
   - platform: flux
     lights:
         - light.plafond_de_lentree
+    start_time: '7:30'
     stop_time: '23:00'
-    name: Fluxer
+    name: Fluxer Entrée
   - platform: flux
     lights:
         - light.lumiere_de_la_chambre
+    start_time: '7:30'
     stop_time: '23:00'
     name: Fluxer chambre
 
+remote:
+  - platform: harmony
+    name: Salon
+    host: 192.168.1.12
+    activity: 'Regarder Apple TV'
+
+google:
+    client_id: !secret google_client_id
+    client_secret: !secret google_client_secret
 
 neato:
     username: !secret neato_username
     password: !secret neato_password
 
+#alarm_control_panel:
+#      platform: manual
+
 #These inputs are mainly used as script flags
-#input_boolean:
-#    someone_home:
-#        name: Someone detected
-#        initial: off
-#    reset_tv_hifi:
-#        name: TV reset Wanted
-#        initial: off
-#    tv_hifi_reset_done:
-#        name: TV has been reset
-#        initial: on
+input_boolean:
+    appletv:
+        name: Regarder Apple TV
+        initial: off
+        icon: mdi:apple
+    music:
+        name: Ecouter de la musique
+        initial: off
+        icon: mdi:music-circle
+    ps4:
+        name: Jouer à PS4
+        initial: off
+        icon: mdi:playstation
+    television:
+        name: Regarder la TV
+        initial: off
+        icon: mdi:television
 
 ##################################################################
 #

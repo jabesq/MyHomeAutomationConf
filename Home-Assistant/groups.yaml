@@ -3,7 +3,7 @@ salon:
     name: Salon
     entities:
       - switch.lumiere_salon
-      - switch.tv_hifi
+      - switch.guirlande_noel
       - media_player.apple_tv
       - light.plafond_du_salon
       - light.saladier
@@ -30,9 +30,20 @@ other_lights:
     icon: mdi:lightbulb
     entities:
       - light.plafond_de_lentree
-      - switch.fluxer
+      - switch.fluxer_entree
       - light.lampe_de_la_cuisine
       - light.lampe_bureau
+
+remotes:
+    name: Harmony Hub
+    icon: mdi:remote
+    entities:
+      - remote.salon
+      - sensor.harmony_salon
+      - input_boolean.appletv
+      - input_boolean.ps4
+      - input_boolean.music
+      - input_boolean.television
 
 weather:
     name: Meteo
@@ -74,12 +85,15 @@ speedtest:
       - sensor.stats_speedtest_upload_mean
 
 nzbget:
-    name: NZBGet
+    name: NZBGet/Sonarr
     icon: mdi:speedometer
     entities:
       - sensor.nzbget_download_paused
       - sensor.nzbget_post_processing_paused
       - sensor.nzbget_speed
+      - sensor.sonarr_queue
+      - sensor.sonarr_upcoming
+      - sensor.sonarr_wanted
 
 security:
     name: Sécurité

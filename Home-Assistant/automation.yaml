@@ -3,7 +3,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_maisontravail
-      above: 30
+      above: 25
     - platform: time
       after: '08:00:00'
   condition:
@@ -11,7 +11,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_maisontravail
-        above: 30
+        above: 25
       - condition: time
         after: '08:00:00'
         before: '09:00:00'
@@ -34,17 +34,17 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_travailmaison
-      above: 30
+      above: 25
     - platform: time
-      after: '17:45:00'
+      after: '17:15:00'
   condition:
     condition: and
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_travailmaison
-        above: 30
+        above: 25
       - condition: time
-        after: '17:45:00'
+        after: '17:15:00'
         before: '19:00:00'
         weekday:
           - mon
@@ -107,4 +107,92 @@
     data:
         title: 'Batterie iPhone'
         message: 'Batterie iPhone < 30%, penser a recharger'
+
+- alias: "Regarder Apple TV demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder Apple TV" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.appletv
+
+- alias: "Regarder Apple TV arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Regarder Apple TV" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.appletv
+
+- alias: "Ecouter musique demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Ecouter de la musique" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.music
+
+- alias: "Ecouter musique arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Ecouter de la musique" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.music
+
+- alias: "Jouer PS4 demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Jouer à PS4" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.ps4
+
+- alias: "Jouer PS4 arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Jouer à PS4" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.ps4
+
+- alias: "Regarder TV demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder la TV" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.television
+
+- alias: "Regarder TV arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Regarder la TV" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.television
 

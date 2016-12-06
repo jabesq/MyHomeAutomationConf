@@ -29,5 +29,11 @@ sensor.battery_iphone:
 switch.lumiere_salon:
     homebridge_hidden: true
     homebridge_name: Arbre de Lumière
+switch.guirlande_noel:
+    homebridge_hidden: true
 switch.ganondorf_schedule:
     homebridge_hidden: true
+sensor.GTFS1:
+    friendly_name: "Lignes d'Azur: Carros -> Ferber/Promenade"
+sensor.GTFS2:
+    friendly_name: "Lignes d'Azur: Ferber/Promenade -> Carros"
