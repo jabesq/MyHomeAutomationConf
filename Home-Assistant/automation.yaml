@@ -196,3 +196,80 @@
       service: input_boolean.turn_off
       entity_id: input_boolean.television
 
+- alias: "Démarrer Regarder AppleTV"
+  trigger:
+      platform: state
+      entity_id: input_boolean.appletv
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Regarder Apple TV'
+          entity_id: remote.salon
+
+- alias: "Démarrer Ecouter de la musique"
+  trigger:
+      platform: state
+      entity_id: input_boolean.music
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Ecouter de la musique'
+          entity_id: remote.salon
+
+- alias: "Démarrer Jouer à PS4"
+  trigger:
+      platform: state
+      entity_id: input_boolean.ps4
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Jouer à PS4'
+          entity_id: remote.salon
+
+- alias: "Démarrer Regarder la TV"
+  trigger:
+      platform: state
+      entity_id: input_boolean.television
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Regarder la TV'
+          entity_id: remote.salon
+
+- alias: "Arrêter Harmony Hub"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.appletv
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.music
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.ps4
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.television
+      state: 'off'
+  condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.appletv
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.music
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.ps4
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.television
+          state: 'off'
+  action:
+      service: remote.turn_off
+      data:
+          entity_id: remote.salon
