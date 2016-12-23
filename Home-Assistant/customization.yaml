@@ -1,15 +1,3 @@
-input_boolean.someone_home:
-    hidden: true
-input_boolean.tv_hifi_reset_done:
-    hidden: true
-input_boolean.reset_tv_hifi:
-    hidden: true
-sensor.conso_tv:
-    hidden: true
-script.someone_seen:
-    hidden: true
-script.timer_someone_seen:
-    hidden: true
 media_player.ipad_air_2_de_hugo:
     hidden: true
 media_player.plex_web_safari:
@@ -18,8 +6,6 @@ media_player.iphone:
     hidden: true
 media_player.ipad:
     hidden: true
-sensor.battery_iphone_2:
-    hidden: false
 sensor.trajet_maisontravail:
     icon: mdi:traffic-light
 sensor.trajet_travailmaison:
@@ -37,3 +23,11 @@ sensor.GTFS1:
     friendly_name: "Lignes d'Azur: Carros -> Ferber/Promenade"
 sensor.GTFS2:
     friendly_name: "Lignes d'Azur: Ferber/Promenade -> Carros"
+group.all_automations:
+    hidden: true
+group.all_lights:
+    hidden: true
+group.all_switches:
+    hidden: true
+group.calendar:
+    hidden: false

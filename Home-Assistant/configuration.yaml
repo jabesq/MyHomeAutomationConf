@@ -34,6 +34,15 @@ recorder:
 
 # Enables support for tracking state changes over time.
 history:
+    exclude:
+        domains:
+          - automation
+          - updater
+          - group
+        entities:
+          - sensor.nzbget_speed
+          - sensor.nzbget_post_processing_paused
+          - sensor.nzbget_download_paused
 
 logbook:
 

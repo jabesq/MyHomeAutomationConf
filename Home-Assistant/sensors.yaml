@@ -104,7 +104,6 @@
   days: 2
   monitored_conditions:
     - upcoming
-    - wanted
     - queue
 
 - platform: template
@@ -112,3 +111,7 @@
       harmony_salon:
           value_template: '{{ states.remote.salon.attributes.current_activity }}'
           friendly_name: 'Harmony Salon'
+
+- platform: waqi
+  locations:
+    - nice aeroport

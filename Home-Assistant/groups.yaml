@@ -2,28 +2,35 @@
 salon:
     name: Salon
     entities:
-      - switch.lumiere_salon
-      - switch.guirlande_noel
-      - media_player.apple_tv
-      - light.plafond_du_salon
-      - light.saladier
-      - light.guirlande
-      - light.meuble_tele
-      - light.lampe_des_cubes
       - sensor.netatmo_station_temperature
       - sensor.netatmo_station_co2
       - sensor.netatmo_station_humidity
       - sensor.netatmo_station_noise
 
+light_salon:
+    name: "Lumière Salon"
+    entities:
+      - switch.lumiere_salon
+      - switch.guirlande_noel
+      - light.plafond_du_salon
+      - light.saladier
+      - light.guirlande
+      - light.meuble_tele
+      - light.lampe_des_cubes
+
 chambre:
     name: Chambre
     icon: mdi:hotel
     entities:
-      - light.lumiere_de_la_chambre
-      - switch.fluxer_chambre
       - sensor.netatmo_chambre_temperature
       - sensor.netatmo_chambre_co2
       - sensor.netatmo_chambre_humidity
+
+light_chambre:
+    name: "Lumière Chambre"
+    entities:
+      - light.lumiere_de_la_chambre
+      - switch.fluxer_chambre
 
 other_lights:
     name: Autres lumières
@@ -34,7 +41,7 @@ other_lights:
       - light.lampe_de_la_cuisine
       - light.lampe_bureau
 
-remotes:
+harmony_hub:
     name: Harmony Hub
     icon: mdi:remote
     entities:
@@ -49,6 +56,7 @@ weather:
     name: Meteo
     entities:
       - sensor.dark_sky_summary
+      - sensor.waqi_nice_aeroport_paca
       - sensor.netatmo_exterieur_temperature
       - sensor.dark_sky_apparent_temperature
       - sensor.dark_sky_dew_point
@@ -64,7 +72,7 @@ weather:
       - sensor.dark_sky_wind_speed
       - sensor.pws_alerts
 
-travel_time:
+traffic:
     name: Bison Futé
     icon: mdi:car
     entities:
@@ -73,6 +81,17 @@ travel_time:
       - sensor.stats_retour_maison_mean
       - sensor.trajet_maisontravail
       - sensor.trajet_travailmaison
+      - sensor.gtfs1
+      - sensor.gtfs2
+
+neato:
+    name: Ganondorf
+    icon: mdi:robot
+    entities:
+      - sensor.ganondorf_battery
+      - sensor.ganondorf_status
+      - switch.ganondorf_clean
+      - switch.ganondorf_schedule
 
 speedtest:
     name: Speedtest
@@ -102,31 +121,38 @@ security:
       - binary_sensor.salon_motion
       - binary_sensor.salon_someone_known
       - binary_sensor.salon_someone_unknown
+      - binary_sensor.salon__porte_entree_tag_open
+      - binary_sensor.salon__porte_entree_tag_vibration
       - camera.salon
 
-script:
-    entities:
-      - script.reset_flags
-      - script.reset_tv_hifi
-
-#default_view:
-home:
+default_view:
+#home:
     view: yes
     entities:
-      - sensor.retour_maison
       - updater.updater
       - device_tracker.hugo_iphone_6s
       - sensor.battery_iphone
       - sensor.yr_symbol
+      - sensor.retour_maison
+      - sensor.gtfs1
+      - sensor.gtfs2
+      - sensor.ganondorf_battery
+      - sensor.ganondorf_status
       - sun.sun
+      - media_player.apple_tv
+      - group.light_salon
       - group.salon
+      - group.light_chambre
       - group.chambre
       - group.other_lights
-      - group.travel_time
+      - group.harmony_hub
+      - group.neato
+      - group.traffic
       - group.weather
       - group.security
       - camera.salon
       - switch.ganondorf_clean
+      - switch.ganondorf_schedule
 
 admin_panel:
     name: Admin
@@ -137,12 +163,10 @@ admin_panel:
       - group.nzbget
       - group.script
       - group.all_devices
+      - group.all_switches
+      - group.all_remotes
       - group.all_lights
+      - group.all_automations
+      - group.calendar
       - configurator.philips_hue
       - configurator.plex_media_server
-      - automation.trajet_maisontravail
-      - automation.trajet_travailmaison
-      - automation.batterie_iphone_faible
-      - automation.rapport_activite_elsys_work
-      - automation.reset_tvhifi
-      - automation.someone_known_has_been_seen
