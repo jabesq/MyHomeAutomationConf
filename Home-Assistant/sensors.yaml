@@ -1,3 +1,7 @@
+- platform: time_date
+  display_options:
+    - 'time'
+
 - platform: yr
 
 - platform: darksky
@@ -36,7 +40,7 @@
   value_template: '{{ value_json.batt }}'
 
 - platform: nzbget
-  host: !secret nzbget_base_url
+  host: !secret hyrule_base_url
   username: !secret nzbget_username
   password: !secret nzbget_password
   monitored_variables:
@@ -99,7 +103,7 @@
 
 - platform: sonarr
   api_key: !secret sonarr_api_key
-  host: 192.168.1.20
+  host: !secret hyrule_base_url
   port: 8989
   days: 2
   monitored_conditions:

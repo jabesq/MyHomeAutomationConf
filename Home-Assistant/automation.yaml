@@ -1,9 +1,33 @@
 ### AUTOMATION ###
+- alias: 'Appartement Vide'
+  trigger:
+      platform: state
+      entity_id: group.all_devices
+      state: 'not_home'
+      for:
+          minutes: 1
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+    - service: media_player.media_pause
+      entity_id: media_player.bureau,media_player.cuisine,media_player.salon
+    - service: switch.turn_on
+      entity_id: switch.ganondorf_schedule
+
+- alias: 'Appartement occupé'
+  trigger:
+      platform: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+      - service: switch.turn_off
+        entity_id: switch.ganondorf_schedule,switch.ganondorf_clean
+
 - alias: 'Trajet maison-travail'
   trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_maisontravail
-      above: 25
+      above: 30
     - platform: time
       after: '08:00:00'
   condition:
@@ -11,7 +35,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_maisontravail
-        above: 25
+        above: 30
       - condition: time
         after: '08:00:00'
         before: '09:00:00'
@@ -34,7 +58,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.trajet_travailmaison
-      above: 25
+      above: 30
     - platform: time
       after: '17:15:00'
   condition:
@@ -42,7 +66,7 @@
     conditions:
       - condition: numeric_state
         entity_id: sensor.trajet_travailmaison
-        above: 25
+        above: 30
       - condition: time
         after: '17:15:00'
         before: '19:00:00'
@@ -136,7 +160,7 @@
       entity_id: remote.salon
   condition:
       condition: template
-      value_template: '{{ trigger.to_state.attributes.current_activity == "Ecouter de la musique" }}'
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Écouter de la musique" }}'
   action:
       service: input_boolean.turn_on
       entity_id: input_boolean.music
@@ -147,7 +171,7 @@
       entity_id: remote.salon
   condition:
       condition: template
-      value_template: '{{ trigger.to_state.attributes.current_activity != "Ecouter de la musique" }}'
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Écouter de la musique" }}'
   action:
       service: input_boolean.turn_off
       entity_id: input_boolean.music
@@ -215,7 +239,7 @@
   action:
       service: remote.turn_on
       data:
-          activity: 'Ecouter de la musique'
+          activity: 'Écouter de la musique'
           entity_id: remote.salon
 
 - alias: "Démarrer Jouer à PS4"
@@ -269,6 +293,36 @@
         - condition: state
           entity_id: input_boolean.television
           state: 'off'
+  action:
+      service: remote.turn_off
+      data:
+          entity_id: remote.salon
+
+- alias: "Sonos => démarre ampli"
+  trigger:
+      platform: state
+      entity_id: media_player.salon
+      state: 'playing'
+  condition:
+      condition: state
+      entity_id: remote.salon
+      state: 'off'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Écouter de la musique'
+          entity_id: remote.salon
+
+- alias: "Sonos => stop ampli"
+  trigger:
+      platform: state
+      entity_id: media_player.salon
+      state: 'paused'
+      for:
+          minutes: 5
+  condition:
+      condition: template
+      value_template: '{{ is_state("sensor.harmony_salon", "Écouter de la musique") }}'
   action:
       service: remote.turn_off
       data:

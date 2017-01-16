@@ -1,4 +1,28 @@
 ### SCRIPT ###
+test_tts:
+    alias: Test for TTS
+    sequence:
+      - service: tts.google_say
+        entity_id: media_player.bureau
+        data:
+            message: "Bonjour Hugo. Ceci est un test des notifications vocales d'Home-Assistant. Au revoir"
+
+
+say:
+    alias: SONOS TTS
+    sequence:
+      - service: media_player.sonos_snapshot
+        data_template:
+            entity_id: "{{ where }}"
+      - service: tts.google_say
+        data_template:
+            entity_id: "{{ where }}"
+            message: "{{ what }}"
+      # Update by @cyberkov, so the message won't get cropped by the restore. Obviously only work for durations less than 60 seconds (see thread below)
+      - delay: '00:00:{{ states.media_player[where].attributes.media_duration | int }}'
+      - service: media_player.sonos_restore
+        data_template:
+            entity_id: "{{ where }}"
 
 #Turn off TV/Hifi then turn it back on after 10 sec
 #reset_tv_hifi:

@@ -12,7 +12,7 @@ sensor.trajet_travailmaison:
     icon: mdi:traffic-light
 sensor.battery_iphone:
     icon: mdi:battery-80
-switch.lumiere_salon:
+switch.arbre_lumiere:
     homebridge_hidden: true
     homebridge_name: Arbre de Lumière
 switch.guirlande_noel:

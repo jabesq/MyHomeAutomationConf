@@ -14,9 +14,14 @@ homeassistant:
     elevation: 8
 
 http:
-  api_password: !secret api_password
-  ssl_certificate: !secret ssl_certificate
-  ssl_key: !secret ssl_key
+    api_password: !secret api_password
+    ssl_certificate: !secret ssl_certificate
+    ssl_key: !secret ssl_key
+    base_url: !secret base_url
+    trusted_networks:
+      - 127.0.0.1
+      - ::1
+      - 192.168.2.0/24
 
 #Geofencing setup
 zone:
@@ -55,6 +60,8 @@ updater:
 # Discover some devices automatically
 discovery:
 
+ios:
+
 #WeMo Devices
 wemo:
 
@@ -80,18 +87,11 @@ zeroconf:
 notify:
   - platform: pushbullet
     api_key: !secret pushbullet_api_key
+  - platform: ios
+    name: iOSApp
 
 #Detect all device on network + my iCloud device + OwnTracks User (MQTT)
 device_tracker:
-#  - platform: icloud
-#    username: !secret icloud_username
-#    password: !secret icloud_password
-#    # If new discovered devices are tracked by default (default: yes)
-#    track_new_devices: yes
-#    # Seconds between each scan for new devices (default: 12)
-#    interval_seconds: 300
-#    # Seconds to wait till marking someone as not home after not being seen (default: 180)
-#    consider_home: 180
   - platform: owntracks
     max_gps_accuracy: 150
     # If new discovered devices are tracked by default (default: yes)
@@ -100,6 +100,11 @@ device_tracker:
     interval_seconds: 300
     # Seconds to wait till marking someone as not home after not being seen (default: 180)
     consider_home: 180
+  - platform: asuswrt
+    host: !secret asuswrt_host
+    username: !secret asuswrt_username
+    password: !secret asuswrt_password
+    track_new_devices: no
 
 proximity:
     home:
@@ -117,7 +122,7 @@ netatmo:
 # Example configuration.yaml entry
 light:
   platform: hue
-  host: 192.168.1.10
+  host: 192.168.2.10
   scan_interval: 10
 
 #Sensors
@@ -127,25 +132,27 @@ switch:
   - platform: flux
     lights:
         - light.plafond_de_lentree
-    start_time: '7:30'
     stop_time: '23:00'
     name: Fluxer Entrée
   - platform: flux
     lights:
         - light.lumiere_de_la_chambre
-    start_time: '7:30'
     stop_time: '23:00'
     name: Fluxer chambre
 
 remote:
   - platform: harmony
     name: Salon
-    host: 192.168.1.12
+    host: 192.168.2.12
     activity: 'Regarder Apple TV'
 
 google:
     client_id: !secret google_client_id
     client_secret: !secret google_client_secret
+
+tts:
+  - platform: google
+    language: 'fr'
 
 neato:
     username: !secret neato_username
@@ -161,7 +168,7 @@ input_boolean:
         initial: off
         icon: mdi:apple
     music:
-        name: Ecouter de la musique
+        name: Écouter de la musique
         initial: off
         icon: mdi:music-circle
     ps4:

@@ -10,7 +10,7 @@ salon:
 light_salon:
     name: "Lumière Salon"
     entities:
-      - switch.lumiere_salon
+      - switch.arbre_lumiere
       - switch.guirlande_noel
       - light.plafond_du_salon
       - light.saladier
@@ -140,6 +140,9 @@ default_view:
       - sensor.ganondorf_status
       - sun.sun
       - media_player.apple_tv
+      - media_player.bureau
+      - media_player.cuisine
+      - media_player.salon
       - group.light_salon
       - group.salon
       - group.light_chambre
