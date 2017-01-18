@@ -302,7 +302,8 @@
   trigger:
       platform: state
       entity_id: media_player.salon
-      state: 'playing'
+      from: 'paused'
+      to: 'playing'
   condition:
       condition: state
       entity_id: remote.salon
@@ -317,7 +318,8 @@
   trigger:
       platform: state
       entity_id: media_player.salon
-      state: 'paused'
+      from: 'playing'
+      to: 'paused'
       for:
           minutes: 5
   condition:

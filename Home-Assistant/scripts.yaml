@@ -24,6 +24,16 @@ say:
         data_template:
             entity_id: "{{ where }}"
 
+notification_vanessa:
+    alias: Message pour Vanessa
+    sequence:
+      - service: script.turn_on
+        entity_id: script.say
+        data:
+            variables:
+                where: 'media_player.cuisine'
+                what: 'Je pars du boulot. A toute, Bisous'
+
 #Turn off TV/Hifi then turn it back on after 10 sec
 #reset_tv_hifi:
 #    alias: Reset TV and Hifi (to shutdown Hifi)
