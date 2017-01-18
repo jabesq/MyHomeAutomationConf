@@ -18,25 +18,14 @@
             "username": "REDACTED",
             "password": "REDACTED"
         },
-                "deviceTypes": [
-                        "weatherstation",
-                        "thermostat",
-                        "welcome"
-                        ]
     },
 
     {
         "platform": "HomeAssistant",
         "name": "HomeAssistant",
-        "host": "http://127.0.0.1:8123",
+        "host": "https://127.0.0.1:8123",
         "password": "REDACTED",
-        "supported_types": ["switch", "media_player", "scene", "input_boolean"]
-    },
-
-    {
-        "platform": "HarmonyHub",
-        "name": "Living Room Harmony Hub"
+        "supported_types": ["switch", "scene", "input_boolean"]
     }
-
     ]
 }
