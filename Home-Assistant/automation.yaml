@@ -14,6 +14,15 @@
     - service: switch.turn_on
       entity_id: switch.ganondorf_schedule
 
+- alias: 'Vanessa est partie'
+  trigger:
+      platform: state
+      entity_id: device_tracker.vanessa
+      state: 'not_home'
+  action:
+      service: ifttt.trigger
+      data: {"event":"vanessa_leaves"}
+
 - alias: 'Appartement occupé'
   trigger:
       platform: state
