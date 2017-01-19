@@ -1,0 +1,22 @@
+### Chambre ###
+chambre_air_quality:
+    name: Chambre
+    entities:
+      - sensor.netatmo_chambre_temperature
+      - sensor.netatmo_chambre_co2
+      - sensor.netatmo_chambre_humidity
+
+light_chambre:
+    name: "Lumière Chambre"
+    entities:
+      - light.lumiere_de_la_chambre
+      - switch.fluxer_chambre
+
+chambre_view:
+    name: Chambre
+    view: yes
+    icon: mdi:hotel
+    entities:
+      - group.chambre_air_quality
+      - group.light_chambre
+

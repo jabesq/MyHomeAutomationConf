@@ -1,0 +1,107 @@
+### Home panel configuration ###
+lumieres:
+    name: Lumières
+    entities:
+      - light.all_lights
+      - light.salon
+      - light.entree
+      - light.cuisine
+      - light.chambre
+      - light.bureau
+      - light.terrasse_
+
+qualite_air_sum:
+    name: Qualité de l'air
+    entities:
+      - sensor.netatmo_station_temperature
+      - sensor.netatmo_station_co2
+      - sensor.netatmo_chambre_temperature
+      - sensor.netatmo_chambre_co2
+
+weather:
+    name: Météo
+    entities:
+      - sensor.dark_sky_summary
+      - sensor.waqi_nice_aeroport_paca
+      - sensor.netatmo_exterieur_temperature
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_dew_point
+      - sensor.netatmo_exterieur_humidity
+      - sensor.dark_sky_ozone
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_precip_intensity
+      - sensor.netatmo_station_pressure
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+
+harmony_sum:
+    name: Harmony Hub
+    entities:
+      - sensor.harmony_salon
+      - remote.salon
+
+ganondorf_sum:
+    name: Ganondorf
+    entities:
+      - sensor.ganondorf_status
+      - switch.ganondorf_clean
+
+security:
+    name: Sécurité
+    icon: mdi:security-home
+    entities:
+      - binary_sensor.salon_motion
+      - binary_sensor.salon_someone_known
+      - binary_sensor.salon_someone_unknown
+      - binary_sensor.salon__porte_entree_tag_open
+      - binary_sensor.salon__porte_entree_tag_vibration
+      - camera.salon
+
+bison_fute_maison:
+    name: Bison Futé
+    entities:
+      - sensor.trajet_maisontravail
+      - sensor.gtfs2
+
+bison_fute_travail:
+    name: Bison Futé
+    entities:
+      - proximity.home
+      - sensor.retour_maison
+      - sensor.stats_retour_maison_mean
+      - sensor.trajet_travailmaison
+      - sensor.gtfs1
+
+bison_fute:
+    name: Bison Futé
+    entities:
+      - proximity.home
+      - sensor.retour_maison
+      - sensor.stats_retour_maison_mean
+
+#default_view:
+home:
+    view: yes
+    entities:
+      - updater.updater
+      - sun.sun
+      - device_tracker.hugo_iphone_6s
+      - device_tracker.vanessa
+      - sensor.battery_iphone
+      - sensor.yr_symbol
+      - sensor.time
+      - group.lumieres
+      - group.qualite_air_sum
+      - group.weather
+      - group.harmony_sum
+      - group.bison_fute_maison
+      - group.bison_fute_travail
+      - group.bison_fute
+      - group.ganondorf_sum
+      - group.security
+      - media_player.salon
+      - media_player.cuisine
+      - media_player.bureau

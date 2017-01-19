@@ -94,12 +94,6 @@ notify:
 device_tracker:
   - platform: owntracks
     max_gps_accuracy: 150
-    # If new discovered devices are tracked by default (default: yes)
-    track_new_devices: no
-    # Seconds between each scan for new devices (default: 12)
-    interval_seconds: 300
-    # Seconds to wait till marking someone as not home after not being seen (default: 180)
-    consider_home: 180
   - platform: asuswrt
     host: !secret asuswrt_host
     username: !secret asuswrt_username
@@ -186,7 +180,7 @@ input_boolean:
 #
 ##################################################################
 
-group: !include groups.yaml
+group: !include_dir_merge_named groups/
 
 automation: !include automation.yaml
 

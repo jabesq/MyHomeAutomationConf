@@ -1,0 +1,36 @@
+### Admin panel ###
+speedtest:
+    name: Speedtest
+    entities:
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.stats_speedtest_download_mean
+      - sensor.stats_speedtest_upload_mean
+
+nzbget:
+    name: NZBGet/Sonarr
+    entities:
+      - sensor.nzbget_download_paused
+      - sensor.nzbget_post_processing_paused
+      - sensor.nzbget_speed
+      - sensor.sonarr_queue
+      - sensor.sonarr_upcoming
+      - sensor.sonarr_wanted
+
+admin_panel:
+    name: Admin
+    icon: mdi:settings
+    view: yes
+    entities:
+      - group.speedtest
+      - group.nzbget
+      - group.all_scripts
+      - group.all_devices
+      - group.all_switches
+      - group.all_remotes
+      - group.all_lights
+      - group.all_automations
+      - group.calendar
+      - configurator.philips_hue
+      - configurator.plex_media_server

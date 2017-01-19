@@ -1,0 +1,30 @@
+### Autre pieces ###
+lumiere_entree:
+    name: Entrée
+    entities:
+      - light.plafond_de_lentree
+      - switch.fluxer_entree
+
+other_lights:
+    name: Lumières
+    entities:
+      - light.lampe_de_la_cuisine
+      - light.lampe_bureau
+
+neato:
+    name: Ganondorf
+    entities:
+      - sensor.ganondorf_battery
+      - sensor.ganondorf_status
+      - switch.ganondorf_clean
+      - switch.ganondorf_schedule
+
+other_view:
+    name: Autres
+    view: yes
+    entities:
+      - group.lumiere_entree
+      - group.other_lights
+      - group.neato
+      - media_player.cuisine
+      - media_player.bureau

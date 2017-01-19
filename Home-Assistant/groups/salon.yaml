@@ -1,0 +1,40 @@
+### Salon ###
+salon_air_quality:
+    name: Salon
+    entities:
+      - sensor.netatmo_station_temperature
+      - sensor.netatmo_station_co2
+      - sensor.netatmo_station_humidity
+      - sensor.netatmo_station_noise
+
+light_salon:
+    name: "Lumière Salon"
+    entities:
+      - switch.arbre_lumiere
+      - light.plafond_du_salon
+      - light.saladier
+      - light.guirlande
+      - light.meuble_tele
+      - light.lampe_des_cubes
+
+harmony_hub:
+    name: Harmony Hub
+    icon: mdi:remote
+    entities:
+      - sensor.harmony_salon
+      - remote.salon
+      - input_boolean.appletv
+      - input_boolean.ps4
+      - input_boolean.music
+      - input_boolean.television
+
+salon_view:
+    name: Salon
+    icon: mdi:sofa
+    view: yes
+    entities:
+      - group.light_salon
+      - group.salon_air_quality
+      - group.harmony_hub
+      - media_player.apple_tv
+      - media_player.salon

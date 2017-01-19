@@ -24,10 +24,12 @@ sensor.GTFS1:
 sensor.GTFS2:
     friendly_name: "Lignes d'Azur: Ferber/Promenade -> Carros"
 group.all_automations:
-    hidden: true
+    hidden: false
 group.all_lights:
     hidden: true
 group.all_switches:
     hidden: true
+group.all_scripts:
+    hidden: false
 group.calendar:
     hidden: false
