@@ -30,7 +30,6 @@ harmony_hub:
 
 salon_view:
     name: Salon
-    icon: mdi:sofa
     view: yes
     entities:
       - group.light_salon

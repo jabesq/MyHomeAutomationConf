@@ -82,8 +82,8 @@ bison_fute:
       - sensor.retour_maison
       - sensor.stats_retour_maison_mean
 
-#default_view:
-home:
+default_view:
+#home:
     view: yes
     entities:
       - updater.updater

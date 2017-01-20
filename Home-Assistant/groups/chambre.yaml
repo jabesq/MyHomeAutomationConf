@@ -15,7 +15,6 @@ light_chambre:
 chambre_view:
     name: Chambre
     view: yes
-    icon: mdi:hotel
     entities:
       - group.chambre_air_quality
       - group.light_chambre

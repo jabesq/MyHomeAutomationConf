@@ -33,3 +33,11 @@ group.all_scripts:
     hidden: false
 group.calendar:
     hidden: false
+group.salon_view:
+    order: 1
+group.chambre_view:
+    order: 2
+group.other_view:
+    order: 3
+group.admin_panel:
+    order: 4

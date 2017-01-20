@@ -32,5 +32,3 @@ admin_panel:
       - group.all_lights
       - group.all_automations
       - group.calendar
-      - configurator.philips_hue
-      - configurator.plex_media_server
