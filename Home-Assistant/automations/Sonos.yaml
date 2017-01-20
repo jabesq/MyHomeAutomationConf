@@ -1,0 +1,32 @@
+### SONOS ###
+- alias: "Sonos => démarre ampli"
+  trigger:
+      platform: state
+      entity_id: media_player.salon
+      from: 'paused'
+      to: 'playing'
+  condition:
+      condition: state
+      entity_id: remote.salon
+      state: 'off'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Écouter de la musique'
+          entity_id: remote.salon
+
+- alias: "Sonos => stop ampli"
+  trigger:
+      platform: state
+      entity_id: media_player.salon
+      from: 'playing'
+      to: 'paused'
+      for:
+          minutes: 5
+  condition:
+      condition: template
+      value_template: '{{ is_state("sensor.harmony_salon", "Écouter de la musique") }}'
+  action:
+      service: remote.turn_off
+      data:
+          entity_id: remote.salon

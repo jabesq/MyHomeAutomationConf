@@ -1,0 +1,45 @@
+### Automations base sur la localisation d'Hugo ###
+- alias: 'Hugo est au travail'
+  trigger:
+      platform: state
+      entity_id: device_tracker.hugo_iphone_6s
+      state: 'work'
+  action:
+    - service: group.set_visibility
+      entity_id: group.bison_fute_travail
+      data:
+          visible: true
+    - service: group.set_visibility
+      entity_id: group.bison_fute_maison,group.bison_fute
+      data:
+          visible: false
+
+- alias: 'Hugo est à la maison'
+  trigger:
+      platform: state
+      entity_id: device_tracker.hugo_iphone_6s
+      state: 'home'
+  action:
+    - service: group.set_visibility
+      entity_id: group.bison_fute_maison
+      data:
+          visible: true
+    - service: group.set_visibility
+      entity_id: group.bison_fute_travail,group.bison_fute
+      data:
+          visible: false
+
+- alias: 'Hugo est parti'
+  trigger:
+      platform: state
+      entity_id: device_tracker.hugo_iphone_6s
+      state: 'not_home'
+  action:
+    - service: group.set_visibility
+      entity_id: group.bison_fute
+      data:
+          visible: true
+    - service: group.set_visibility
+      entity_id: group.bison_fute_travail,group.bison_fute_maison
+      data:
+          visible: false

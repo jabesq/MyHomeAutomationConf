@@ -1,0 +1,34 @@
+### Harmony Musique ###
+- alias: "Ecouter musique demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Écouter de la musique" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.music
+
+- alias: "Ecouter musique arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Écouter de la musique" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.music
+
+- alias: "Démarrer Ecouter de la musique"
+  trigger:
+      platform: state
+      entity_id: input_boolean.music
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Écouter de la musique'
+          entity_id: remote.salon
+

@@ -1,0 +1,24 @@
+### Occupation automations (everybody leaves or arrives) ###
+- alias: 'Appartement Vide'
+  trigger:
+      platform: state
+      entity_id: group.all_devices
+      state: 'not_home'
+      for:
+          minutes: 1
+  action:
+    - service: light.turn_off
+      entity_id: group.all_lights
+    - service: media_player.media_pause
+      entity_id: media_player.bureau,media_player.cuisine,media_player.salon
+    - service: switch.turn_on
+      entity_id: switch.ganondorf_schedule
+
+- alias: 'Appartement occupé'
+  trigger:
+      platform: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+      - service: switch.turn_off
+        entity_id: switch.ganondorf_schedule,switch.ganondorf_clean

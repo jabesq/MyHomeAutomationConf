@@ -1,0 +1,9 @@
+### Automation base sur la position de Vanessa ###
+- alias: 'Vanessa est partie'
+  trigger:
+      platform: state
+      entity_id: device_tracker.vanessa
+      state: 'not_home'
+  action:
+      service: ifttt.trigger
+      data: {"event":"vanessa_leaves"}

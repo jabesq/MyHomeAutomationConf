@@ -1,0 +1,35 @@
+### Harmony TV ###
+- alias: "Regarder TV demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder la TV" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.television
+
+- alias: "Regarder TV arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Regarder la TV" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.television
+
+
+- alias: "Démarrer Regarder la TV"
+  trigger:
+      platform: state
+      entity_id: input_boolean.television
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Regarder la TV'
+          entity_id: remote.salon
+

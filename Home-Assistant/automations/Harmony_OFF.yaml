@@ -1,0 +1,35 @@
+### Harmony OFF ###
+- alias: "Arrêter Harmony Hub"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.appletv
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.music
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.ps4
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.television
+      state: 'off'
+  condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.appletv
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.music
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.ps4
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.television
+          state: 'off'
+  action:
+      service: remote.turn_off
+      data:
+          entity_id: remote.salon
+

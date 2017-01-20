@@ -1,0 +1,33 @@
+### Harmony Apple TV ###
+- alias: "Regarder Apple TV demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder Apple TV" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.appletv
+
+- alias: "Regarder Apple TV arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity != "Regarder Apple TV" }}'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.appletv
+
+- alias: "Démarrer Regarder AppleTV"
+  trigger:
+      platform: state
+      entity_id: input_boolean.appletv
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Regarder Apple TV'
+          entity_id: remote.salon

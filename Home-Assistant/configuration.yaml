@@ -22,6 +22,8 @@ http:
       - 127.0.0.1
       - ::1
       - 192.168.2.0/24
+    ip_ban_enabled: True
+    login_attempts_threshold: 3
 
 #Geofencing setup
 zone:
@@ -115,9 +117,9 @@ netatmo:
 
 # Example configuration.yaml entry
 light:
-  platform: hue
-  host: 192.168.2.10
-  scan_interval: 10
+    platform: hue
+    host: 192.168.2.10
+    scan_interval: 10
 
 #Sensors
 sensor: !include sensors.yaml
@@ -135,7 +137,7 @@ switch:
     name: Fluxer chambre
 
 remote:
-  - platform: harmony
+    platform: harmony
     name: Salon
     host: 192.168.2.12
     activity: 'Regarder Apple TV'
@@ -152,8 +154,8 @@ neato:
     username: !secret neato_username
     password: !secret neato_password
 
-#alarm_control_panel:
-#      platform: manual
+alarm_control_panel:
+      platform: manual
 
 #These inputs are mainly used as script flags
 input_boolean:
@@ -182,11 +184,7 @@ input_boolean:
 
 group: !include_dir_merge_named groups/
 
-automation: !include automation.yaml
+automation: !include_dir_merge_list automations/
 
 #One action is good, but several is better
 script: !include scripts.yaml
-
-shell_command:
-    update_hass: cd $HOME/MyHomeAutomationConf && git fetch --all && git reset --hard private/credentials
-

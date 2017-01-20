@@ -1,0 +1,62 @@
+### Bison Futé ###
+- alias: 'Trajet maison-travail'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.trajet_maisontravail
+      above: 30
+    - platform: time
+      after: '08:00:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.trajet_maisontravail
+        above: 30
+      - condition: time
+        after: '08:00:00'
+        before: '09:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: zone
+        entity_id: device_tracker.hugo_iphone_6s
+        zone: zone.home
+  action:
+    service: notify.notify
+    data:
+        title: 'Bison Fute'
+        message: 'Bouchons present sur le trajet Maison-Travail'
+
+- alias: 'Trajet travail-maison'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.trajet_travailmaison
+      above: 30
+    - platform: time
+      after: '17:15:00'
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.trajet_travailmaison
+        above: 30
+      - condition: time
+        after: '17:15:00'
+        before: '19:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: zone
+        entity_id: device_tracker.hugo_iphone_6s
+        zone: zone.work
+  action:
+    service: notify.notify
+    data:
+        title: 'Bison Fute'
+        message: 'Bouchons present sur le trajet Travail-Maison'
