@@ -29,7 +29,7 @@
           entity_id: input_boolean.television
           state: 'off'
         - condition: state
-          entity: remote.salon
+          entity_id: remote.salon
           state: 'on'
   action:
       service: remote.turn_off
