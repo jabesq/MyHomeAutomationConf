@@ -37,3 +37,4 @@ salon_view:
       - group.harmony_hub
       - media_player.apple_tv
       - media_player.salon
+      - sensor.plex

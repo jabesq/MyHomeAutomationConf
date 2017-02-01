@@ -27,4 +27,3 @@ other_view:
       - group.other_lights
       - group.neato
       - media_player.cuisine
-      - media_player.bureau

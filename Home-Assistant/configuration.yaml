@@ -38,18 +38,29 @@ sun:
 
 recorder:
     purge_days: 10
+    include:
+        domains:
+          - automation
+          - binary_sensor
+          - sensor
+          - device_tracker
+    exclude:
+        entities:
+          - sensor.yr_symbol
+          - sensor.sonarr_upcoming
+          - sensor.gtfs1
+          - sensor.gtfs2
+          - sensor.sonarr_queue
+          - sensor.time
+          - sensor.nzbget_speed
+          - sensor.nzbget_post_processing_paused
+          - sensor.nzbget_download_paused
 
 # Enables support for tracking state changes over time.
 history:
     exclude:
         domains:
-          - automation
-          - updater
-          - group
-        entities:
-          - sensor.nzbget_speed
-          - sensor.nzbget_post_processing_paused
-          - sensor.nzbget_download_paused
+            automation
 
 logbook:
 
@@ -89,6 +100,7 @@ zeroconf:
 notify:
   - platform: pushbullet
     api_key: !secret pushbullet_api_key
+    name: pushbullet
   - platform: ios
     name: iOSApp
 
@@ -96,11 +108,11 @@ notify:
 device_tracker:
   - platform: owntracks
     max_gps_accuracy: 150
+    track_new_devices: no
   - platform: asuswrt
     host: !secret asuswrt_host
     username: !secret asuswrt_username
     password: !secret asuswrt_password
-    track_new_devices: no
 
 proximity:
     home:
@@ -127,12 +139,14 @@ sensor: !include sensors.yaml
 switch:
   - platform: flux
     lights:
-        - light.plafond_de_lentree
+      - light.plafond_de_lentree
     stop_time: '23:00'
     name: Fluxer Entrée
   - platform: flux
     lights:
-        - light.lumiere_de_la_chambre
+      - light.plafond_de_la_chambre
+      - light.lampe_de_chevet_hugo
+      - light.lampe_de_chevet_vanessa
     stop_time: '23:00'
     name: Fluxer chambre
 
@@ -156,6 +170,7 @@ neato:
 
 alarm_control_panel:
       platform: manual
+      pending_time: 30
 
 #These inputs are mainly used as script flags
 input_boolean:
@@ -175,6 +190,10 @@ input_boolean:
         name: Regarder la TV
         initial: off
         icon: mdi:television
+    admin:
+        name: Admin Mode
+        initial: off
+        icon: mdi:account-settings-variant
 
 ##################################################################
 #
@@ -187,4 +206,4 @@ group: !include_dir_merge_named groups/
 automation: !include_dir_merge_list automations/
 
 #One action is good, but several is better
-script: !include scripts.yaml
+script: !include_dir_named scripts/

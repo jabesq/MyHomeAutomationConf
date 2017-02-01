@@ -4,7 +4,7 @@
 
 - platform: yr
   monitored_conditions:
-      - symbol
+    - symbol
 
 - platform: darksky
   api_key: !secret forecast_api_key
@@ -117,3 +117,6 @@
 - platform: waqi
   locations:
     - nice aeroport
+
+- platform: plex
+  host: !secret hyrule_base_url

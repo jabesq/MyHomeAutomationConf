@@ -9,8 +9,11 @@ chambre_air_quality:
 light_chambre:
     name: "Lumière Chambre"
     entities:
-      - light.lumiere_de_la_chambre
       - switch.fluxer_chambre
+      - light.plafond_de_la_chambre
+      - light.lampe_de_chevet_hugo
+      - light.lampe_de_chevet_vanessa
+
 
 chambre_view:
     name: Chambre
@@ -18,4 +21,5 @@ chambre_view:
     entities:
       - group.chambre_air_quality
       - group.light_chambre
+      - media_player.chambre
 

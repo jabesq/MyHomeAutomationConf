@@ -1,0 +1,15 @@
+alias: SONOS TTS
+sequence:
+  - service: media_player.sonos_snapshot
+    data_template:
+        entity_id: "{{ where }}"
+  - service: tts.google_say
+    data_template:
+        entity_id: "{{ where }}"
+        message: "{{ what }}"
+  # Update by @cyberkov, so the message won't get cropped by the restore. Obviously only work for durations less than 60 seconds (see thread below)
+  - delay: '00:00:15'
+  - service: media_player.sonos_restore
+    data_template:
+        entity_id: "{{ where }}"
+

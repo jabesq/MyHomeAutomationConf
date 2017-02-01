@@ -1,0 +1,22 @@
+### Admin Mode ###
+- alias: "Admin mode enabled"
+  trigger:
+      platform: state
+      entity_id: input_boolean.admin
+      state: 'on'
+  action:
+      service: group.set_visibility
+      entity_id: group.all_automations,group.all_devices,group.all_lights,group.all_remotes,group.all_scripts,group.all_switches
+      data:
+          visible: True
+
+- alias: "Admin mode disabled"
+  trigger:
+      platform: state
+      entity_id: input_boolean.admin
+      state: 'off'
+  action:
+      service: group.set_visibility
+      entity_id: group.all_automations,group.all_devices,group.all_lights,group.all_remotes,group.all_scripts,group.all_switches
+      data:
+          visible: False

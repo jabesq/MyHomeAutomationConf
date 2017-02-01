@@ -1,0 +1,7 @@
+alias: Test for TTS
+sequence:
+  - service: tts.google_say
+    entity_id: media_player.bureau
+    data:
+        message: "Bonjour Hugo. Ceci est un test des notifications vocales d'Home-Assistant. Au revoir"
+

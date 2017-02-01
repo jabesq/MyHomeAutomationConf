@@ -1,0 +1,9 @@
+alias: Message pour Vanessa
+sequence:
+  - service: script.turn_on
+    entity_id: script.say
+    data:
+        variables:
+            where: 'media_player.cuisine,media_player.bureau'
+            what: 'Je pars du boulot. A toute, Bisous'
+

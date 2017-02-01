@@ -104,4 +104,4 @@ default_view:
       - group.security
       - media_player.salon
       - media_player.cuisine
-      - media_player.bureau
+      - media_player.chambre

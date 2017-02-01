@@ -4,6 +4,8 @@
       platform: state
       entity_id: device_tracker.vanessa
       state: 'not_home'
+      for:
+          minutes: 5
   action:
       service: ifttt.trigger
       data: {"event":"vanessa_leaves"}

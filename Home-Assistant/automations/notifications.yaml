@@ -8,7 +8,7 @@
     entity_id: device_tracker.hugo_iphone_6s
     zone: zone.work
   action:
-    service: notify.notify
+    service: notify.pushbullet
     data:
         message: Rapport Activité Elsys
         title: ERP
@@ -41,7 +41,7 @@
         entity_id: sensor.battery_iphone
         below: 30
   action:
-    service: notify.notify
+    service: notify.pushbullet
     data:
         title: 'Batterie iPhone'
         message: 'Batterie iPhone < 30%, penser a recharger'

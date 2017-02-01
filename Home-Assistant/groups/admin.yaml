@@ -23,6 +23,8 @@ admin_panel:
     icon: mdi:settings
     view: yes
     entities:
+      - alarm_control_panel.ha_alarm
+      - input_boolean.admin
       - group.speedtest
       - group.nzbget
       - group.all_scripts
