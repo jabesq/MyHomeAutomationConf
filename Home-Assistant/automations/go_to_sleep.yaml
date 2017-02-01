@@ -1,0 +1,26 @@
+### Automations when it's time to go to sleep ###
+- alias: "Extinction du Salon => Dodo"
+  trigger:
+      platform: state
+      entity_id: light.salon
+      state: 'off'
+  condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '22:00:00'
+          before: '03:00:00'
+        - condition: or
+          conditions:
+            - condition: state
+              entity_id: input_boolean.ps4
+              state: 'on'
+            - condition: state
+              entity_id: input_boolean.appletv
+              state: 'on'
+  action:
+    - service: remote.turn_off
+      data:
+          entity_id: remote.salon
+    - service: homeassistant.turn_on
+      entity_id: group.lumiere_entree

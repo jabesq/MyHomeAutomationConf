@@ -1,0 +1,5 @@
+alias: Vibration porte => timer 5min
+sequence:
+  - delay: 00:05:00
+  - service: light.turn_off
+    entity_id: light.guirlande,light.entree

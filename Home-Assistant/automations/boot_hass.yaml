@@ -1,0 +1,12 @@
+### HomeAssistant Init ###
+- alias: "Restart alarm if away"
+  trigger:
+      platform: event
+      event_type: homeassistant_start
+  condition:
+      condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+      service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.ha_alarm

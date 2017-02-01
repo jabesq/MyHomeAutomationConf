@@ -207,3 +207,5 @@ automation: !include_dir_merge_list automations/
 
 #One action is good, but several is better
 script: !include_dir_named scripts/
+
+scene: !include_dir_list scenes/

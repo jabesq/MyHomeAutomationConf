@@ -1,0 +1,10 @@
+name: Vibration porte
+entities:
+  light.guirlande:
+    state: on
+    brightness: 254
+    color_temp: 154
+  light.entree:
+    state: on
+    brightness: 254
+    color_temp: 154
