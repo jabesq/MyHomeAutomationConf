@@ -1,4 +1,4 @@
-### Automations used by alarm ###
+### Vibration on main door ###
 
 - alias: "Vibration porte => lumière"
   trigger:

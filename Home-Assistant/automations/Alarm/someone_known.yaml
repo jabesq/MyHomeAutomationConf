@@ -1,0 +1,22 @@
+### Someone known seen => temp disable alarm ###
+- alias: "Alarme désactivé pour une heure"
+  trigger:
+      platform: state
+      entity_id: binary_sensor.salon_someone_known
+      state: 'on'
+  condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.ha_alarm
+          state: 'armed_away'
+        - condition: state
+          entity_id: script.alarm_disabled_1h
+          state: 'on'
+  action:
+    - service: script.turn_off
+      entity_id: script.alarm_disabled_1h
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.ha_alarm
+    - service: script.turn_on
+      entity_id: script.alarm_disabled_1h

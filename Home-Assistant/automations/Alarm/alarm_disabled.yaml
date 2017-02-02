@@ -1,0 +1,10 @@
+### Alarm is Disabled ###
+
+- alias: "Alarme est désactivée"
+  trigger:
+      platform: state
+      entity_id: alarm_control_panel.ha_alarm
+      state: 'disarmed'
+  action:
+    - service: script.turn_off
+      entity_id: script.vibration_alarm

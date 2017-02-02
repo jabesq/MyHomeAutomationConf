@@ -1,0 +1,8 @@
+name: Bed time
+entities:
+  switch.fluxer_entree:
+    state: on
+  light.entree:
+    state: on
+    brightness: 119
+    color_temp: 153

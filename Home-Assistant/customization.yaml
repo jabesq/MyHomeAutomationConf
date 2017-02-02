@@ -21,6 +21,8 @@ switch.ganondorf_schedule:
     homebridge_hidden: true
 input_boolean.admin:
     homebridge_hidden: true
+scene.vibration_porte:
+    homebridge_hidden: true
 sensor.GTFS1:
     friendly_name: "Lignes d'Azur: Carros -> Ferber/Promenade"
 sensor.GTFS2:
