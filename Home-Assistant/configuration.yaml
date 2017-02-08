@@ -74,6 +74,21 @@ updater:
 discovery:
 
 ios:
+    push:
+        categories:
+          - name: Alarm
+            identifier: 'ALARM'
+            actions:
+              - identifier: 'FIRE_ALARM'
+                title: 'Activer Alarme'
+                activationMode: 'background'
+                authenticationRequired: no
+                destructive: yes
+              - identifier: 'CANCEL_ALARM'
+                title: 'Désactiver Alarme'
+                activationMode: 'background'
+                authenticationRequired: no
+                destructive: yes
 
 #WeMo Devices
 wemo:
@@ -194,6 +209,8 @@ input_boolean:
         name: Admin Mode
         initial: off
         icon: mdi:account-settings-variant
+    neato_weekend:
+        initial: off
 
 ##################################################################
 #

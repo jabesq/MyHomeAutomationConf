@@ -6,12 +6,14 @@ media_player.iphone:
     hidden: true
 media_player.ipad:
     hidden: true
+
 sensor.trajet_maisontravail:
     icon: mdi:traffic-light
 sensor.trajet_travailmaison:
     icon: mdi:traffic-light
 sensor.battery_iphone:
     icon: mdi:battery-80
+
 switch.arbre_lumiere:
     homebridge_hidden: true
     homebridge_name: Arbre de Lumière
@@ -19,14 +21,20 @@ switch.guirlande_noel:
     homebridge_hidden: true
 switch.ganondorf_schedule:
     homebridge_hidden: true
+
 input_boolean.admin:
     homebridge_hidden: true
+input_boolean.neato_weekend:
+    homebridge_hidden: true
+
 scene.vibration_porte:
     homebridge_hidden: true
+
 sensor.GTFS1:
     friendly_name: "Lignes d'Azur: Carros -> Ferber/Promenade"
 sensor.GTFS2:
     friendly_name: "Lignes d'Azur: Ferber/Promenade -> Carros"
+
 group.all_automations:
     hidden: false
 group.all_lights:

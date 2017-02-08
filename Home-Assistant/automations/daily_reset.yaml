@@ -1,0 +1,7 @@
+- alias: "Reset Journalier"
+  trigger:
+      platform: time
+      after: '00:00:00'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.neato_weekend

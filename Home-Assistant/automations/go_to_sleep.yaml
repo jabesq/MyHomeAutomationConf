@@ -3,10 +3,14 @@
   trigger:
       platform: state
       entity_id: light.salon
-      state: 'off'
+      from: 'on'
+      to: 'off'
   condition:
       condition: and
       conditions:
+        - condition: state
+          entity_id: light.salon
+          state: 'off'
         - condition: time
           after: '22:00:00'
           before: '03:00:00'
@@ -22,5 +26,7 @@
     - service: remote.turn_off
       data:
           entity_id: remote.salon
-    - service: homeassistant.turn_on
-      entity_id: group.lumiere_entree
+    - service: scene.turn_on
+      entity_id: scene.bed_time
+    - service: switch.turn_on
+      entity_id: switch.fluxer_entree

@@ -1,0 +1,33 @@
+- alias: "Notification pour déclencher alarme manuellement"
+  trigger:
+      platform: state
+      entity_id: binary_sensor.salon_someone_unknown
+      state: 'on'
+  action:
+      service: notify.iosapp
+      data:
+          message: "Quelqu'un d'inconnu a été vu"
+          data:
+              push:
+                  category: 'ALARM'
+
+- alias: "Alarme déclenché manuellement"
+  trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+          actionName: 'FIRE_ALARM'
+  action:
+      service: notify.pushbullet
+      data:
+          message: "Test"
+
+- alias: "Désactiver alarm"
+  trigger:
+      platform: event
+      event_type: ios.notification_action_fired
+      event_data:
+          actionName: 'CANCEL_ALARM'
+  action:
+      service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.ha_alarm

@@ -1,0 +1,32 @@
+### Neato Connected automations for weekend days ###
+- alias: "Démarre Neato Connected (Weekend)"
+  trigger:
+      platform: state
+      entity_id: group.all_devices
+      from: "home"
+      to: "not_home"
+  condition:
+      condition: and
+      conditions:
+        - condition: time
+          weekday:
+            - sat
+            - sun
+        - condition: state
+          entity_id: input_boolean.neato_weekend
+          state: 'off'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.neato_weekend
+    - service: switch.turn_on
+      entity_id: switch.ganondorf_clean
+
+- alias: "Neato démarré manuellement (Weekend)"
+  trigger:
+      platform: state
+      entity_id: switch.ganondorf_clean
+      from: 'off'
+      to: 'on'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.neato_weekend
