@@ -9,6 +9,8 @@
       condition: and
       conditions:
         - condition: time
+          after: '10:00:00'
+          before: '19:00:00'
           weekday:
             - sat
             - sun

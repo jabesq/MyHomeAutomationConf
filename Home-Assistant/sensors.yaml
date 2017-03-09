@@ -115,8 +115,13 @@
           friendly_name: 'Harmony Salon'
 
 - platform: waqi
+  token: !secret waqi_token
   locations:
+    - nice
+  stations:
     - nice aeroport
 
 - platform: plex
   host: !secret hyrule_base_url
+
+- platform: moon

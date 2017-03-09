@@ -13,6 +13,8 @@ homeassistant:
     # Impacts weather/sunrise data (altitude above sea level)
     elevation: 8
 
+config:
+
 http:
     api_password: !secret api_password
     ssl_certificate: !secret ssl_certificate
@@ -22,6 +24,7 @@ http:
       - 127.0.0.1
       - ::1
       - 192.168.2.0/24
+      - 10.8.0.0/24
     ip_ban_enabled: True
     login_attempts_threshold: 3
 
@@ -102,7 +105,10 @@ mqtt:
 
 #Media Player
 media_player:
-    platform: plex
+  - platform: plex
+  - platform: apple_tv
+    host: !secret appletv_host
+    login_id: !secret appletv_login_id
 
 #IFTTT
 ifttt:
@@ -191,23 +197,21 @@ alarm_control_panel:
 input_boolean:
     appletv:
         name: Regarder Apple TV
-        initial: off
         icon: mdi:apple
     music:
         name: Écouter de la musique
-        initial: off
         icon: mdi:music-circle
     ps4:
         name: Jouer à PS4
-        initial: off
         icon: mdi:playstation
+    switch:
+        name: Jouer à la Switch
+        icon: mdi:tablet
     television:
         name: Regarder la TV
-        initial: off
         icon: mdi:television
     admin:
         name: Admin Mode
-        initial: off
         icon: mdi:account-settings-variant
     neato_weekend:
         initial: off

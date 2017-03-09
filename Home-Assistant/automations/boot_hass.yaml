@@ -10,3 +10,25 @@
   action:
       service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.ha_alarm
+
+- alias: "Get Current Harmony state (appleTV)"
+  trigger:
+      platform: event
+      event_type: homeassistant_start
+  condition:
+      condition: template
+      value_template: '{{ is_state("sensor.harmony_salon", "Regarder Apple TV") }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.appletv
+
+- alias: "Get Current Harmony state (PS4)"
+  trigger:
+      platform: event
+      event_type: homeassistant_start
+  condition:
+      condition: template
+      value_template: '{{ is_state("sensor.harmony_salon", "Jouer à PS4") }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.ps4

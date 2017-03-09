@@ -3,6 +3,10 @@
       platform: state
       entity_id: binary_sensor.salon_someone_unknown
       state: 'on'
+  condition:
+      condition: state
+      entity_id: alarm_control_panel.ha_alarm
+      state: 'armed_away'
   action:
       service: notify.iosapp
       data:
@@ -10,6 +14,7 @@
           data:
               push:
                   category: 'ALARM'
+              entity_id: camera.salon
 
 - alias: "Alarme déclenché manuellement"
   trigger:

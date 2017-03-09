@@ -23,9 +23,27 @@
               entity_id: input_boolean.appletv
               state: 'on'
   action:
+    - service: scene.turn_on
+      entity_id: scene.bed_time
+    - service: switch.turn_on
+      entity_id: switch.fluxer_entree
     - service: remote.turn_off
       data:
           entity_id: remote.salon
+
+- alias: "Extinction TV/Console => Dodo"
+  trigger:
+    - platform: state
+      entity_id: input_boolean.ps4
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.appletv
+      state: 'off'
+  condition:
+      condition: time
+      after: '22:00:00'
+      before: '03:00:00'
+  action:
     - service: scene.turn_on
       entity_id: scene.bed_time
     - service: switch.turn_on

@@ -7,8 +7,10 @@
       condition: template
       value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder Apple TV" }}'
   action:
-      service: input_boolean.turn_on
+    - service: input_boolean.turn_on
       entity_id: input_boolean.appletv
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv
 
 - alias: "Regarder Apple TV arrêté depuis Harmony"
   trigger:
@@ -23,8 +25,10 @@
           entity_id: input_boolean.appletv
           state: 'on'
   action:
-      service: input_boolean.turn_off
+    - service: input_boolean.turn_off
       entity_id: input_boolean.appletv
+    - service: media_player.turn_off
+      entity_id: media_player.apple_tv
 
 - alias: "Démarrer Regarder AppleTV"
   trigger:
@@ -32,7 +36,9 @@
       entity_id: input_boolean.appletv
       state: 'on'
   action:
-      service: remote.turn_on
+    - service: remote.turn_on
       data:
           activity: 'Regarder Apple TV'
           entity_id: remote.salon
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv

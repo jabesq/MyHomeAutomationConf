@@ -25,6 +25,7 @@ harmony_hub:
       - remote.salon
       - input_boolean.appletv
       - input_boolean.ps4
+      - input_boolean.switch
       - input_boolean.music
       - input_boolean.television
 

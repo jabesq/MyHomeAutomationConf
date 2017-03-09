@@ -11,6 +11,9 @@
       entity_id: input_boolean.ps4
       state: 'off'
     - platform: state
+      entity_id: input_boolean.switch
+      state: 'off'
+    - platform: state
       entity_id: input_boolean.television
       state: 'off'
   condition:
@@ -24,6 +27,9 @@
           state: 'off'
         - condition: state
           entity_id: input_boolean.ps4
+          state: 'off'
+        - condition: state
+          entity_id: input_boolean.switch
           state: 'off'
         - condition: state
           entity_id: input_boolean.television

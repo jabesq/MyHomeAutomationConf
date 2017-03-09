@@ -1,0 +1,39 @@
+### Harmony Switch ###
+- alias: "Jouer Switch demarré depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: template
+      value_template: '{{ trigger.to_state.attributes.current_activity == "Jouer a la Switch" }}'
+  action:
+      service: input_boolean.turn_on
+      entity_id: input_boolean.ps4
+
+- alias: "Jouer Switch arrêté depuis Harmony"
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  condition:
+      condition: and
+      conditions:
+        - condition: template
+          value_template: '{{ trigger.to_state.attributes.current_activity != "Jouer a la Switch" }}'
+        - condition: state
+          entity_id: input_boolean.ps4
+          state: 'on'
+  action:
+      service: input_boolean.turn_off
+      entity_id: input_boolean.ps4
+
+- alias: "Démarrer Jouer a la Switch"
+  trigger:
+      platform: state
+      entity_id: input_boolean.ps4
+      state: 'on'
+  action:
+      service: remote.turn_on
+      data:
+          activity: 'Jouer a la Switch'
+          entity_id: remote.salon
+

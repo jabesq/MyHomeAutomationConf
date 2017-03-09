@@ -93,6 +93,7 @@ default_view:
       - sensor.battery_iphone
       - sensor.yr_symbol
       - sensor.time
+      - sensor.moon
       - group.lumieres
       - group.qualite_air_sum
       - group.weather
@@ -102,6 +103,7 @@ default_view:
       - group.bison_fute
       - group.ganondorf_sum
       - group.security
+      - media_player.apple_tv
       - media_player.salon
       - media_player.cuisine
       - media_player.chambre
