@@ -18,6 +18,9 @@
             "username": "REDACTED",
             "password": "REDACTED"
         },
+       "deviceTypes": [
+               "weatherstation"
+               ]
     },
 
     {
@@ -25,7 +28,7 @@
         "name": "HomeAssistant",
         "host": "https://127.0.0.1:8123",
         "password": "REDACTED",
-        "supported_types": ["switch", "scene", "input_boolean"]
+        "supported_types": ["switch", "input_boolean"]
     }
     ]
 }
