@@ -1,5 +1,6 @@
 ### HomeAssistant Init ###
 - alias: "Restart alarm if away"
+  hide_entity: true
   trigger:
       platform: event
       event_type: homeassistant_start

@@ -21,7 +21,6 @@
     - visibility
     - ozone
 
-
 - platform: speedtest
   minute:
     - 0

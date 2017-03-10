@@ -210,11 +210,18 @@ input_boolean:
     television:
         name: Regarder la TV
         icon: mdi:television
-    admin:
-        name: Admin Mode
-        icon: mdi:account-settings-variant
     neato_weekend:
-        initial: off
+
+input_select:
+    harmony:
+        name: Harmony Activities
+        options:
+          - Regarder Apple TV
+          - Jouer à PS4
+          - Jouer a la Switch
+          - Écouter de la musique
+          - Regarder la TV
+          - PowerOff
 
 ##################################################################
 #

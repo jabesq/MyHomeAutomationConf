@@ -1,5 +1,6 @@
 ### Automation base sur la position de Vanessa ###
 - alias: 'Vanessa est partie'
+  hide_entity: true
   trigger:
       platform: state
       entity_id: device_tracker.vanessa

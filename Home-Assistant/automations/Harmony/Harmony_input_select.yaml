@@ -1,0 +1,38 @@
+# Automations to interact with Harmony input select
+- alias: 'Remote external update living room'
+  hide_entity: true
+  trigger:
+      platform: state
+      entity_id: remote.salon
+  action:
+      service: input_select.select_option
+      data_template:
+          entity_id: input_select.harmony
+          option: >
+            {{ states.remote.salon.attributes.current_activity }}
+
+# The last automation will start an activity once it's selected from the input select in the frontend
+- alias: 'Remote start activity from input select living room tv'
+  hide_entity: true
+  trigger:
+      platform: state
+      entity_id: input_select.harmony
+  action:
+      service: remote.turn_on
+      data_template:
+          entity_id: remote.salon
+          activity: >
+              {{ states.input_select.harmony.state }}
+
+- alias: Harmony Set Input Select On Start
+  hide_entity: true
+  trigger:
+      platform: event
+      event_type: homeassistant_start
+  action:
+    - delay:
+        seconds: 30
+    - service: input_select.select_option
+      data_template:
+          entity_id: input_select.harmony
+          option: '{{ states.remote.salon.attributes.current_activity }}'

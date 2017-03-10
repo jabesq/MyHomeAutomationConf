@@ -40,7 +40,7 @@ weather:
 harmony_sum:
     name: Harmony Hub
     entities:
-      - sensor.harmony_salon
+      - input_select.harmony
       - remote.salon
 
 ganondorf_sum:

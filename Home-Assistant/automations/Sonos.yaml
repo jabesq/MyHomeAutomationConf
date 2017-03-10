@@ -1,5 +1,6 @@
 ### SONOS ###
 - alias: "Sonos => démarre ampli"
+  hide_entity: true
   trigger:
       platform: state
       entity_id: media_player.salon
@@ -16,6 +17,7 @@
           entity_id: remote.salon
 
 - alias: "Sonos => stop ampli"
+  hide_entity: true
   trigger:
       platform: state
       entity_id: media_player.salon

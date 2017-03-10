@@ -1,5 +1,6 @@
 ### Notifications ###
 - alias: 'Rapport Activite Elsys #work'
+  hide_entity: true
   trigger:
     platform: time
     after: '14:30:00'
@@ -16,6 +17,7 @@
             url: https://portail.advans-group.com/ActivityReport
 
 - alias: 'Batterie iPhone faible'
+  hide_entity: true
   trigger:
       - platform: numeric_state
         entity_id: sensor.battery_iphone

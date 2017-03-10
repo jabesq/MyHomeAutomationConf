@@ -8,7 +8,7 @@
       value_template: '{{ trigger.to_state.attributes.current_activity == "Jouer a la Switch" }}'
   action:
       service: input_boolean.turn_on
-      entity_id: input_boolean.ps4
+      entity_id: input_boolean.switch
 
 - alias: "Jouer Switch arrêté depuis Harmony"
   trigger:
@@ -20,16 +20,16 @@
         - condition: template
           value_template: '{{ trigger.to_state.attributes.current_activity != "Jouer a la Switch" }}'
         - condition: state
-          entity_id: input_boolean.ps4
+          entity_id: input_boolean.switch
           state: 'on'
   action:
       service: input_boolean.turn_off
-      entity_id: input_boolean.ps4
+      entity_id: input_boolean.switch
 
 - alias: "Démarrer Jouer a la Switch"
   trigger:
       platform: state
-      entity_id: input_boolean.ps4
+      entity_id: input_boolean.switch
       state: 'on'
   action:
       service: remote.turn_on

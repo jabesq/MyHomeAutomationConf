@@ -1,5 +1,6 @@
 ### Automations base sur la localisation d'Hugo ###
 - alias: 'Hugo est au travail'
+  hide_entity: true
   trigger:
       platform: state
       entity_id: device_tracker.hugo_iphone_6s
@@ -15,6 +16,7 @@
           visible: false
 
 - alias: 'Hugo est à la maison'
+  hide_entity: true
   trigger:
       platform: state
       entity_id: device_tracker.hugo_iphone_6s
@@ -30,6 +32,7 @@
           visible: false
 
 - alias: 'Hugo est parti'
+  hide_entity: true
   trigger:
       platform: state
       entity_id: device_tracker.hugo_iphone_6s

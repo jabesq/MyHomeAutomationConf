@@ -1,5 +1,6 @@
 ### Occupation automations (everybody leaves or arrives) ###
 - alias: 'Appartement Vide'
+  hide_entity: true
   trigger:
       platform: state
       entity_id: group.all_devices
@@ -17,12 +18,13 @@
       entity_id: alarm_control_panel.ha_alarm
 
 - alias: 'Appartement occupé'
+  hide_entity: true
   trigger:
       platform: state
       entity_id: group.all_devices
       state: 'home'
   action:
     - service: switch.turn_off
-      entity_id: switch.ganondorf_schedule,switch.ganondorf_clean
+      entity_id: switch.ganondorf_schedule
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.ha_alarm
