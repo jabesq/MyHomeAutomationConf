@@ -1,0 +1,78 @@
+#### Automations to manage lights in living room
+- alias: "Allume Arbre de lumière"
+  trigger:
+    - platform: state
+      entity_id: light.plafond_du_salon
+      state: 'on'
+    - platform: state
+      entity_id: light.lampe_des_cubes
+      state: 'on'
+    - platform: state
+      entity_id: light.meuble_tele
+      state: 'on'
+    - platform: state
+      entity_id: light.guirlande
+      state: 'on'
+    - platform: state
+      entity_id: light.saladier
+      state: 'on'
+  condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: light.plafond_du_salon
+          state: 'on'
+        - condition: state
+          entity_id: light.lampe_des_cubes
+          state: 'on'
+        - condition: state
+          entity_id: light.meuble_tele
+          state: 'on'
+        - condition: state
+          entity_id: light.guirlande
+          state: 'on'
+        - condition: state
+          entity_id: light.saladier
+          state: 'on'
+  action:
+      service: switch.turn_on
+      entity_id: switch.arbre_lumiere
+
+- alias: "Eteindre Arbre de lumière"
+  trigger:
+    - platform: state
+      entity_id: light.plafond_du_salon
+      state: 'off'
+    - platform: state
+      entity_id: light.lampe_des_cubes
+      state: 'off'
+    - platform: state
+      entity_id: light.meuble_tele
+      state: 'off'
+    - platform: state
+      entity_id: light.guirlande
+      state: 'off'
+    - platform: state
+      entity_id: light.saladier
+      state: 'off'
+  condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: light.plafond_du_salon
+          state: 'off'
+        - condition: state
+          entity_id: light.lampe_des_cubes
+          state: 'off'
+        - condition: state
+          entity_id: light.meuble_tele
+          state: 'off'
+        - condition: state
+          entity_id: light.guirlande
+          state: 'off'
+        - condition: state
+          entity_id: light.saladier
+          state: 'off'
+  action:
+      service: switch.turn_off
+      entity_id: switch.arbre_lumiere
