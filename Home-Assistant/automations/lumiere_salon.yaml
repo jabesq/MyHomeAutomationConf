@@ -34,6 +34,9 @@
         - condition: state
           entity_id: light.saladier
           state: 'on'
+        - condition: state
+          entity_id: switch.arbre_lumiere
+          state: 'off'
   action:
       service: switch.turn_on
       entity_id: switch.arbre_lumiere
@@ -73,6 +76,9 @@
         - condition: state
           entity_id: light.saladier
           state: 'off'
+        - condition: state
+          entity_id: switch.arbre_lumiere
+          state: 'on'
   action:
       service: switch.turn_off
       entity_id: switch.arbre_lumiere

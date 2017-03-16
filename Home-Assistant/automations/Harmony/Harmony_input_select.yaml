@@ -17,6 +17,9 @@
   trigger:
       platform: state
       entity_id: input_select.harmony
+  condition:
+      condition: template
+      value_template: '{{ states.remote.salon.attributes.current_activity != states.input_select.harmony.state }}'
   action:
       service: remote.turn_on
       data_template:

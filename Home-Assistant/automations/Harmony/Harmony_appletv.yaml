@@ -4,8 +4,13 @@
       platform: state
       entity_id: remote.salon
   condition:
-      condition: template
-      value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder Apple TV" }}'
+      condition: and
+      conditions:
+        - condition: template
+          value_template: '{{ trigger.to_state.attributes.current_activity == "Regarder Apple TV" }}'
+        - condition: state
+          entity_id: input_boolean.appletv
+          state: 'off'
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.appletv
@@ -36,9 +41,11 @@
       entity_id: input_boolean.appletv
       state: 'on'
   action:
+    - service: media_player.turn_on
+      entity_id: media_player.apple_tv
+    - condition: template
+      value_template: '{{ states.remote.salon.attributes.current_activity != "Regarder Apple TV" }}'
     - service: remote.turn_on
       data:
           activity: 'Regarder Apple TV'
           entity_id: remote.salon
-    - service: media_player.turn_on
-      entity_id: media_player.apple_tv

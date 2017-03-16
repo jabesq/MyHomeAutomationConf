@@ -4,8 +4,13 @@
       platform: state
       entity_id: remote.salon
   condition:
-      condition: template
-      value_template: '{{ trigger.to_state.attributes.current_activity == "Jouer a la Switch" }}'
+      condition: and
+      conditions:
+        - condition: template
+          value_template: '{{ trigger.to_state.attributes.current_activity == "Jouer a la Switch" }}'
+        - condition: state
+          entity_id: input_boolean.switch
+          state: 'off'
   action:
       service: input_boolean.turn_on
       entity_id: input_boolean.switch
@@ -31,6 +36,9 @@
       platform: state
       entity_id: input_boolean.switch
       state: 'on'
+  condition:
+      condition: template
+      value_template: '{{ states.remote.salon.attributes.current_activity != "Jouer a la Switch" }}'
   action:
       service: remote.turn_on
       data:
