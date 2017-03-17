@@ -21,4 +21,5 @@ phue.conf
 harmony_media_room.conf
 pyozw.sqlite
 .*
+!/.travis.yml
 !/.gitignore
