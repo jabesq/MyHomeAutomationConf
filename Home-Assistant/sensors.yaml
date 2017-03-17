@@ -116,9 +116,7 @@
 - platform: waqi
   token: !secret waqi_token
   locations:
-    - nice
-  stations:
-    - nice aeroport
+    - Nice Aeroport
 
 - platform: plex
   host: !secret hyrule_base_url
