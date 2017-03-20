@@ -209,6 +209,9 @@ input_boolean:
         name: Regarder la TV
         icon: mdi:television
     neato_weekend:
+    guest_mode:
+        name: Mode Invité
+        icon: mdi:human-greeting
 
 input_select:
     harmony:
