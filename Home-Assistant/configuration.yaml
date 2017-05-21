@@ -138,6 +138,7 @@ device_tracker:
     host: !secret asuswrt_host
     username: !secret asuswrt_username
     password: !secret asuswrt_password
+  - platform: bluetooth_tracker
 
 proximity:
     home:
@@ -238,7 +239,8 @@ input_select:
 
 group: !include_dir_merge_named groups/
 
-automation: !include_dir_merge_list automations/
+automation old: !include_dir_merge_list automations/
+automation: !include automations.yaml
 
 #One action is good, but several is better
 script: !include_dir_named scripts/
