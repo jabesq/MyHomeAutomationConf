@@ -71,12 +71,6 @@ frontend:
 # Checks for available updates
 updater:
 
-panel_iframe:
-    configurator:
-        title: Configurator
-        icon: mdi:wrench
-        url: http://dupras.duckdns.org:3218
-
 # Discover some devices automatically
 discovery:
 
@@ -106,6 +100,14 @@ mqtt:
     port: 1883
     client_id: home-assistant
     keepalive: 60
+    username: !secret mqtt_user
+    password: !secret mqtt_passwd
+    birth_message:
+      topic: 'hass/status'
+      payload: 'online'
+    will_message:
+      topic: 'hass/status'
+      payload: 'offline'
 
 #Media Player
 media_player:
@@ -133,12 +135,11 @@ notify:
 device_tracker:
   - platform: owntracks
     max_gps_accuracy: 150
-    track_new_devices: no
+    track_new_devices: yes
   - platform: asuswrt
     host: !secret asuswrt_host
     username: !secret asuswrt_username
     password: !secret asuswrt_password
-  - platform: bluetooth_tracker
 
 proximity:
     home:
