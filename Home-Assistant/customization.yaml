@@ -21,6 +21,8 @@ switch.guirlande_noel:
     homebridge_hidden: true
 switch.ganondorf_schedule:
     homebridge_hidden: true
+switch.prise_fibaro_zwave_switch_2_0:
+    homebridge_switch_type: outlet
 
 input_boolean.admin:
     homebridge_hidden: true

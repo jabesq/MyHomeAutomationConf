@@ -5,6 +5,7 @@
 *.key
 www
 OZW_Log.txt
+ozw_config
 home-assistant.log
 home-assistant_v2.db
 *.db-journal

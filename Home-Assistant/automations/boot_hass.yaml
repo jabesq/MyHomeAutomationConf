@@ -2,8 +2,8 @@
 - alias: "Restart alarm if away"
   hide_entity: true
   trigger:
-      platform: event
-      event_type: homeassistant_start
+      platform: homeassistant
+      event: start
   condition:
       condition: state
       entity_id: group.all_devices
@@ -14,8 +14,8 @@
 
 - alias: "Get Current Harmony state (appleTV)"
   trigger:
-      platform: event
-      event_type: homeassistant_start
+      platform: homeassistant
+      event: start
   condition:
       condition: template
       value_template: '{{ not is_state("sensor.harmony_salon", "PowerOff") }}'
@@ -35,3 +35,15 @@
                 input_boolean.switch
             {% endif %}
 
+- alias: Harmony Set Input Select On Start
+  hide_entity: true
+  trigger:
+      platform: homeassistant
+      event: start
+  action:
+    - delay:
+        seconds: 30
+    - service: input_select.select_option
+      data_template:
+          entity_id: input_select.harmony
+          option: '{{ states.remote.salon.attributes.current_activity }}'

@@ -1,0 +1,3 @@
+sensor.prise_fibaro_zwave_exporting_2_32:
+  ignored: true
+  polling_intensity: 0
