@@ -18,9 +18,9 @@
             "username": "REDACTED",
             "password": "REDACTED"
         },
-       "deviceTypes": [
-               "weatherstation"
-               ]
+                "deviceTypes": [
+                        "weatherstation"
+                        ]
     },
 
     {

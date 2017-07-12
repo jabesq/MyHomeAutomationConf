@@ -71,6 +71,12 @@ frontend:
 # Checks for available updates
 updater:
 
+panel_iframe:
+    configurator:
+        title: Configurator
+        icon: mdi:wrench
+        url: http://dupras.duckdns.org:3218
+
 # Discover some devices automatically
 discovery:
 
