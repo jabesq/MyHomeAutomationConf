@@ -1,0 +1,25 @@
+name: Soirée TV
+entities:
+  light.meuble_tele:
+    state: on
+    brightness: 142
+  light.plafond_du_salon:
+    state: on
+    brightness: 142
+    color_temp: 497
+  light.lampe_des_cubes:
+    state: on
+    brightness: 142
+    color_temp: 497
+  light.salon:
+    state: on
+    brightness: 142
+    color_temp: 497
+  light.guirlande:
+    state: on
+    brightness: 142
+    color_temp: 500
+  light.saladier:
+    state: on
+    brightness: 142
+    color_temp: 500

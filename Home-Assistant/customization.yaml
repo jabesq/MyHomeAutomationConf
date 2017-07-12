@@ -14,6 +14,23 @@ sensor.trajet_travailmaison:
 sensor.battery_iphone:
     icon: mdi:battery-80
 
+sensor.prise_fibaro_zwave_alarm_level:
+    hidden: true
+sensor.prise_fibaro_zwave_alarm_type:
+    hidden: true
+sensor.prise_fibaro_zwave_exporting:
+    hidden: true
+sensor.prise_fibaro_zwave_power_management:
+    hidden: true
+sensor.prise_fibaro_zwave_sourcenodeid:
+    hidden: true
+sensor.sensor_salon_zwave_alarm_level:
+    hidden: true
+sensor.sensor_salon_zwave_alarm_type:
+    hidden: true
+sensor.sensor_salon_zwave_sourcenodeid:
+    hidden: true
+
 switch.arbre_lumiere:
     homebridge_hidden: true
     homebridge_name: Arbre de Lumière
