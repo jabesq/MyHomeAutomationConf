@@ -2,7 +2,7 @@
   trigger:
       platform: state
       entity_id: binary_sensor.salon_someone_unknown
-      state: 'on'
+      to: 'on'
   condition:
       condition: state
       entity_id: alarm_control_panel.ha_alarm

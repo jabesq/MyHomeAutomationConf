@@ -35,7 +35,7 @@
   trigger:
       platform: state
       entity_id: input_boolean.music
-      state: 'on'
+      to: 'on'
   condition:
       condition: template
       value_template: '{{ states.remote.salon.attributes.current_activity != "Écouter de la musique" }}'

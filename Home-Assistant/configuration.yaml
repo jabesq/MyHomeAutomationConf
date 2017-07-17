@@ -15,10 +15,6 @@ homeassistant:
 
 config:
 
-zwave:
-  usb_path: /dev/ttyACM0
-  config_path: /home/homeassistant/.homeassistant/ozw_config
-
 http:
     api_password: !secret api_password
     base_url: !secret base_url
@@ -117,7 +113,9 @@ mqtt:
 #Media Player
 media_player:
   - platform: plex
-  - platform: apple_tv
+
+apple_tv:
+    name: Apple TV
     host: !secret appletv_host
     login_id: !secret appletv_login_id
 

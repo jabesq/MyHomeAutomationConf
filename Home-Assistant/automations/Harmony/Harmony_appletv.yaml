@@ -39,7 +39,7 @@
   trigger:
       platform: state
       entity_id: input_boolean.appletv
-      state: 'on'
+      to: 'on'
   action:
     - service: media_player.turn_on
       entity_id: media_player.apple_tv

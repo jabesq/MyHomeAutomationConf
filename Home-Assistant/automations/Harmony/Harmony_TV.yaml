@@ -36,7 +36,7 @@
   trigger:
       platform: state
       entity_id: input_boolean.television
-      state: 'on'
+      to: 'on'
   condition:
       condition: template
       value_template: '{{ states.remote.salon.attributes.current_activity != "Regarder la TV" }}'

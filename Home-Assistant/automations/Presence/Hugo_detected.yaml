@@ -4,7 +4,7 @@
   trigger:
       platform: state
       entity_id: device_tracker.hugo_iphone_6s
-      state: 'work'
+      to: 'work'
   action:
     - service: group.set_visibility
       entity_id: group.bison_fute_travail
@@ -20,7 +20,7 @@
   trigger:
       platform: state
       entity_id: device_tracker.hugo_iphone_6s
-      state: 'home'
+      to: 'home'
   action:
     - service: group.set_visibility
       entity_id: group.bison_fute_maison
@@ -36,7 +36,7 @@
   trigger:
       platform: state
       entity_id: device_tracker.hugo_iphone_6s
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: group.set_visibility
       entity_id: group.bison_fute

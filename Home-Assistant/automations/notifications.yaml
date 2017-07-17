@@ -3,7 +3,7 @@
   hide_entity: true
   trigger:
     platform: time
-    after: '14:30:00'
+    at: '14:30:00'
   condition:
     condition: zone
     entity_id: device_tracker.hugo_iphone_6s

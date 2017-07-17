@@ -3,7 +3,7 @@
   trigger:
       platform: state
       entity_id: input_boolean.guest_mode
-      state: 'on'
+      to: 'on'
   action:
     - service: automation.turn_off
       entity_id: automation.neato_demarre_manuellement_weekend,automation.extinction_tvconsole__dodo,automation.extinction_du_salon__dodo,automation.appartement_vide
@@ -12,7 +12,7 @@
   trigger:
       platform: state
       entity_id: input_boolean.guest_mode
-      state: 'off'
+      to: 'off'
   action:
       service: homeassistant.turn_on
       entity_id: group.all_automations

@@ -2,7 +2,7 @@
   hide_entity: true
   trigger:
       platform: time
-      after: '00:00:00'
+      at: '00:00:00'
   action:
       service: input_boolean.turn_off
       entity_id: input_boolean.neato_weekend

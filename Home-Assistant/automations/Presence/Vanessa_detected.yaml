@@ -4,7 +4,7 @@
   trigger:
       platform: state
       entity_id: device_tracker.vanessa
-      state: 'not_home'
+      to: 'not_home'
       for:
           minutes: 5
   action:

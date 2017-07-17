@@ -85,6 +85,20 @@
   server_token: !secret server_token
   start_latitude: !secret home_latitude
   start_longitude: !secret home_longitude
+  product_ids:
+    - 'f2ea021d-af59-4511-8dca-1c4a6cfc8f9b'
+
+- platform: gtfs
+  origin: '21275'
+  destination: '411'
+  data: lignes_dazur.zip
+  name: "GTFS1"
+
+- platform: gtfs
+  origin: '410'
+  destination: '21275'
+  data: lignes_dazur.zip
+  name: "GTFS2"
 
 - platform: sonarr
   api_key: !secret sonarr_api_key
