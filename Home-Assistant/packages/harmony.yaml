@@ -1,0 +1,71 @@
+###############################################################################
+# PACKAGE:      Harmony
+# Description:  
+###############################################################################
+
+remote:
+    platform: harmony
+    name: Salon
+    host: 192.168.2.12
+    activity: 'Regarder Apple TV'
+
+#These inputs are mainly used as script flags
+input_boolean:
+    appletv:
+        name: Regarder Apple TV
+        icon: mdi:apple
+    music:
+        name: Écouter de la musique
+        icon: mdi:music-circle
+    ps4:
+        name: Jouer à PS4
+        icon: mdi:playstation
+    switch:
+        name: Jouer à la Switch
+        icon: mdi:tablet
+    television:
+        name: Regarder la TV
+        icon: mdi:television
+
+
+input_select:
+    harmony:
+        name: Harmony Activities
+        initial: PowerOff
+        options:
+          - Regarder Apple TV
+          - Jouer à PS4
+          - Jouer a la Switch
+          - Écouter de la musique
+          - Regarder la TV
+          - PowerOff
+
+automation:
+  # Automations to interact with Harmony input select
+  - id: harmony_external_update
+    alias: 'Remote external update living room'
+    hide_entity: true
+    trigger:
+      - platform: state
+        entity_id: remote.salon
+    action:
+      - service: input_select.select_option
+        data_template:
+            entity_id: input_select.harmony
+            option: {{ states.remote.salon.attributes.current_activity }}
+
+  # The last automation will start an activity once it's selected from the input select in the frontend
+  - id: harmony_start_input_select
+    alias: 'Remote start activity from input select living room tv'
+    hide_entity: true
+    trigger:
+        platform: state
+        entity_id: input_select.harmony
+    condition:
+      - condition: template
+        value_template: '{{ states.remote.salon.attributes.current_activity != states.input_select.harmony.state }}'
+    action:
+      - service: remote.turn_on
+        data_template:
+            entity_id: remote.salon
+            activity: {{ states.input_select.harmony.state }}

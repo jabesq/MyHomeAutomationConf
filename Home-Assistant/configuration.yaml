@@ -12,6 +12,7 @@ homeassistant:
     customize: !include customization.yaml
     # Impacts weather/sunrise data (altitude above sea level)
     elevation: 8
+    packages: !include_dir_named packages
 
 config:
 
@@ -150,13 +151,6 @@ proximity:
         devices:
           - device_tracker.hugo_iphone_6s
 
-#Netatmo Component
-netatmo:
-    api_key: !secret netatmo_api_key
-    secret_key: !secret netatmo_secret_key
-    username: !secret netatmo_username
-    password: !secret netatmo_password
-
 # Example configuration.yaml entry
 light:
     platform: hue
@@ -180,12 +174,6 @@ switch:
     stop_time: '23:00'
     name: Fluxer chambre
 
-remote:
-    platform: harmony
-    name: Salon
-    host: 192.168.2.12
-    activity: 'Regarder Apple TV'
-
 google:
     client_id: !secret google_client_id
     client_secret: !secret google_client_secret
@@ -204,37 +192,10 @@ alarm_control_panel:
 
 #These inputs are mainly used as script flags
 input_boolean:
-    appletv:
-        name: Regarder Apple TV
-        icon: mdi:apple
-    music:
-        name: Écouter de la musique
-        icon: mdi:music-circle
-    ps4:
-        name: Jouer à PS4
-        icon: mdi:playstation
-    switch:
-        name: Jouer à la Switch
-        icon: mdi:tablet
-    television:
-        name: Regarder la TV
-        icon: mdi:television
     neato_weekend:
     guest_mode:
         name: Mode Invité
         icon: mdi:human-greeting
-
-input_select:
-    harmony:
-        name: Harmony Activities
-        initial: PowerOff
-        options:
-          - Regarder Apple TV
-          - Jouer à PS4
-          - Jouer a la Switch
-          - Écouter de la musique
-          - Regarder la TV
-          - PowerOff
 
 ##################################################################
 #

@@ -1,0 +1,24 @@
+###############################################################################
+# PACKAGE:      Netatmo
+# Description:  netatmo sensor requires username, password.
+###############################################################################
+
+homeassistant:
+    customize:
+        sensor.netatmo_chambre_battery:
+            hidden: true
+        sensor.netatmo_chambre_radio:
+            hidden: true
+        sensor.netatmo_exterieur_battery:
+            hidden: true
+        sensor.netatmo_exterieur_radio:
+            hidden: true
+        sensor.netatmo_station_wifi:
+            hidden: true
+
+#Netatmo Component
+netatmo:
+    api_key: !secret netatmo_api_key
+    secret_key: !secret netatmo_secret_key
+    username: !secret netatmo_username
+    password: !secret netatmo_password
